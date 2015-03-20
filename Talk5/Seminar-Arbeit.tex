@@ -1,0 +1,106 @@
+%!TEX root = ../talk.tex
+\chapter{Overview and Comparison of P2P File Synchronization and Storage Solutions}
+\markboth{Overview and Comparison of P2P File Synchronization and Storage Solutions}{}
+\chaptauthors{Josua Fr\"ohlich, Simon Ruesch}
+
+\Kurzfassung{
+This is where the abstract will go.
+}
+
+\newpage
+
+\minitoc
+
+\newpage
+
+\section{Introduction and Problem Statement} Today, file synchronization and
+storage is demanded more than ever. The average user owns
+multiple devices that are continuously connected to the internet and uses the
+device which is the most practical for his current situation. As a consequence,
+users require their files to be up-to-date at all times regardless of which
+device the user wants to access the files on. A second aspect is that there is
+an ever increasing demand for systems which allow file sharing between users,
+such that multiple people can work on the same files independently, whether at the
+same time or not.
+
+In general, the existing file synchronization and storage systems can be
+categorized into two groups: Client-Server based distributed file storage
+systems (also sometimes referred to as Cloud storage systems) and Peer-to-Peer
+file storage systems. Since giving a comprehensive treatment to both of those
+categories would be beyond the scope of this seminar thesis, the focus here lies on
+Peer-to-Peer file storage systems, henceforth called P2P file storage systems.
+
+This seminar thesis aims to give an overview over the current available P2P file
+storage systems, to categorize them according to their different aspects and to
+compare their assets and drawbacks. The findings will also be compared to a
+popular distributed file storage system.
+
+\section{Background} This section gives a short basic overview over the most
+important topics concerning P2P systems, file storage, and the special
+requirements of P2P file storage systems compared to those of traditional and
+distributed file storage.
+
+\section{Approach} This section describes the criteria we chose to classify the
+different file storage systems.
+
+\subsection{Criteria}
+\begin{itemize}
+\item Type of Distribution: Is the system only a Library or a dedicated software client
+\item Payment Scheme: Is the system free or paid? Who gets paid what under which circumstances?
+\item Source code availability: Is the system open-source or closed source?
+\item Peering Scheme: How are peers connected, how do they communicate and what messages do they interchange (pure, hybrid, centralized, structured peering)
+\item Encryption: Are the communication between peers and the files stored encrypted and with what algorithm?
+\item Trust: How is trust established between peers?
+\item Integrity: How are files and communication protected against fraudulent users and attacks?
+\item Userbase: How many users does the system currently have? Is the system intended for businesses or private users?
+\item Fairness: How is the workload distributed in the system especially considering the heterogeneous hardware used by the peers? 
+\item Fault-tolerance and Availability: How does the system guarantee that files are available to the users at all time? 
+\item Status: In what state is the system? Is it available for use, a scientific prototyp or cancelled?
+\end{itemize}
+
+\section{Comparisons} In this section, we classify and compare four exemplary
+P2P file storage systems according to the classification criteria given in the
+preceding section. We also compare the P2P file storage to a popular distributed
+file storage system to find similarities and differences. At the end, we give a
+summary of the findings and highlight those findings in a table comparing the
+file storage systems with each other.
+
+\subsection{Storj}
+
+\subsection{Hive2Hive / PeerWasp}
+
+\subsection{BitTorrent Sync}
+
+\subsection{AeroFS}
+
+\subsection{Dropbox}
+
+\section{Summary and Conclusions} In this section, we provide a summary about
+the topics mentioned above and draw conclusions about the current state of the
+available P2P file storage systems and what the future could hold for P2P file
+storage.
+
+\begin{thebibliography}{99}
+
+\bibitem {aerofs} \emph{AeroFS} \url{https://www.aerofs.com/}, March, 2015.
+
+\bibitem {bitcoin} S. Nakamoto: \emph{Bitcoin: A Peer-to-Peer Electronic Cash System;} \url{https://bitcoin.org/bitcoin.pdf}, October, 2008.
+
+\bibitem {bittorrentsync-2} J. Farina, M. Scanlon, M. Kechadi: \emph{BitTorrent Sync: First Impressions and Digital Forensic
+Implications;} Proceedings of the First Annual DFRWS Europe, \url{http://ac.els-cdn.com/S1742287614000152/1-s2.0-S1742287614000152-main.pdf?_tid=10ddb6e2-ce69-11e4-9019-00000aacb35d&acdnat=1426791318_6677afbe19d521d323605261c1d19809}, Volume 11, Supplement 1, Pages S77\textendash S86, Volume 11, May, 2014.
+
+\bibitem {box2box} A. Lareida, T. Bocek, S. Golaszewski, C. L\"uthold, M. Weber: \emph{Box2Box - A P2P-based File-Sharing and Synchronization Application;} \url{http://www.csg.uzh.ch/csg/live/teaching/FS13/p2p/challenge/P2P2013DP_017.pdf}, September, 2013.
+
+\bibitem {hive2hive} \emph{Hive2Hive: Open-Source Library for P2P-based File Synchronization and Sharing;} \url{http://hive2hive.com/}, March, 2015.
+
+\bibitem {metadisk} S. Wilkinson, J. Lowry: \emph{Metadisk: Blockchain-based decentralized file storage application;} \url{http://metadisk.org/metadisk.pdf}, December, 2014.
+
+\bibitem {p2pfswu} C. Wu: \emph{Peer-to-Peer Networks;} \url{http://www.csie.nuk.edu.tw/~wuch/course/csf641/csf641-04-storage.pdf}, March, 2015.
+
+\bibitem {p2pfskangasharju} J. Kangasharju: \emph{Peer-to-Peer Networks Chapter 4: Peer-to-Peer Storage;} \url{http://www.cs.helsinki.fi/u/jakangas/Teaching/P2P/P2P-04-Storage.pdf}, March, 2015.
+
+\bibitem {storjPDF} S. Wilkinson: \emph{Storj A Peer-to-Peer Cloud Storage Network;} \url{http://storj.io/storj.pdf/}, December, 2014.
+
+\bibitem {bittorrentsync} \emph{Sync;} \url{https://www.getsync.com/}, March, 2015.
+
+\end{thebibliography}
