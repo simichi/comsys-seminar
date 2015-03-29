@@ -9,7 +9,7 @@ This is where the abstract will go.
 
 \newpage
 
-% the table of content
+% the table of contents
 \minitoc
 
 \newpage
@@ -38,15 +38,21 @@ popular distributed file storage system.
 
 % in chapter xyz we show abc ..
 
-\section{Background} This section gives a short basic overview over the most
+\section{Background} % @Josua
+This section gives a short basic overview over the most
 important topics concerning P2P systems, file storage, and the special
 requirements of P2P file storage systems compared to those of traditional and
 distributed file storage.
-% @Josua
 
-\section{Approach} This section describes the criteria we chose to classify the
+Peer-to-peer networks often lack of having enough peers continuously connected
+to the network. Where peers are defined as some volunteers helping for important
+files enable fast transfer speed.
+
+
+\section{Approach} % @Simon
+This section describes the criteria we chose to classify the
 different file storage systems.
-% @Simon
+
 
 \subsection{Criteria}
 \begin{itemize}
@@ -57,10 +63,10 @@ different file storage systems.
 \item Encryption: Are the communication between peers and the files stored encrypted and with what algorithm?
 \item Trust: How is trust established between peers?
 \item Integrity: How are files and communication protected against fraudulent users and attacks?
-\item Userbase: How many users does the system currently have? Is the system intended for businesses or private users?
+\item User base: How many users does the system currently have? Is the system intended for businesses or private users?
 \item Fairness: How is the workload distributed in the system especially considering the heterogeneous hardware used by the peers? 
 \item Fault-tolerance and Availability: How does the system guarantee that files are available to the users at all time? 
-\item Status: In what state is the system? Is it available for use, a scientific prototyp or cancelled?
+\item Status: In what state is the system? Is it available for use, a scientific prototype or canceled?
 \end{itemize}
 
 \section{Comparisons} In this section, we classify and compare four exemplary
@@ -70,20 +76,24 @@ file storage system to find similarities and differences. At the end, we give a
 summary of the findings and highlight those findings in a table comparing the
 file storage systems with each other.
 
-\subsection{Storj}
-% @Josua
+\subsection{Storj} % @Josua
+One can describe Storj (pronounced storage) as a completely decentralized peer-to-peer
+cloud storage system with it's major concern on security and efficiency. Further
+it includes a peer-to-peer payment system service like Bitcoin \cite{blog:what_is_storj}.
+Storj mainly consists of two applications, namely DriveShare (also called Driveminer)
+and Metadisk. The former is used by users to lease their available unused harddrive
+space for other users, as so called farmers, and get money for it. The latter is a
+web-service used for file sharing used by any user that wants to share his files
+(and will have to pay for it).
 
-\subsection{Hive2Hive / PeerWasp}
-% @Simon
 
-\subsection{BitTorrent Sync}
-% @Simon
+\subsection{Hive2Hive / PeerWasp} % @Simon
 
-\subsection{AeroFS}
-% @Josua
+\subsection{BitTorrent Sync} % @Simon
 
-\subsection{Dropbox}
-% @Andri
+\subsection{AeroFS} % @Josua
+
+\subsection{Dropbox} % @Andri :D
 
 \section{Summary and Conclusions} In this section, we provide a summary about
 the topics mentioned above and draw conclusions about the current state of the
@@ -91,26 +101,66 @@ available P2P file storage systems and what the future could hold for P2P file
 storage.
 
 \begin{thebibliography}{99}
+	\bibitem {aerofs}
+		\emph{AeroFS}
+		\url{https://www.aerofs.com/},
+		March, 2015.
 
-\bibitem {aerofs} \emph{AeroFS} \url{https://www.aerofs.com/}, March, 2015.
+	\bibitem {bitcoin}
+		S. Nakamoto:
+		\emph{Bitcoin: A Peer-to-Peer Electronic Cash System;}
+		\url{https://bitcoin.org/bitcoin.pdf},
+		October, 2008.
 
-\bibitem {bitcoin} S. Nakamoto: \emph{Bitcoin: A Peer-to-Peer Electronic Cash System;} \url{https://bitcoin.org/bitcoin.pdf}, October, 2008.
+	\bibitem {bittorrentsync-2}
+		J. Farina, M. Scanlon, M. Kechadi:
+		\emph{BitTorrent Sync: First Impressions and Digital Forensic Implications;}
+		Proceedings of the First Annual DFRWS Europe,
+		\url{http://ac.els-cdn.com/S1742287614000152/1-s2.0-S1742287614000152-main.pdf?_tid=10ddb6e2-ce69-11e4-9019-00000aacb35d&acdnat=1426791318_6677afbe19d521d323605261c1d19809},
+		Volume 11, Supplement 1, Pages S77\textendash S86, Volume 11, May, 2014.
 
-\bibitem {bittorrentsync-2} J. Farina, M. Scanlon, M. Kechadi: \emph{BitTorrent Sync: First Impressions and Digital Forensic
-Implications;} Proceedings of the First Annual DFRWS Europe, \url{http://ac.els-cdn.com/S1742287614000152/1-s2.0-S1742287614000152-main.pdf?_tid=10ddb6e2-ce69-11e4-9019-00000aacb35d&acdnat=1426791318_6677afbe19d521d323605261c1d19809}, Volume 11, Supplement 1, Pages S77\textendash S86, Volume 11, May, 2014.
+	\bibitem {box2box}
+		A. Lareida, T. Bocek, S. Golaszewski, C. L\"uthold, M. Weber:
+		\emph{Box2Box - A P2P-based File-Sharing and Synchronization Application;}
+		\url{http://www.csg.uzh.ch/csg/live/teaching/FS13/p2p/challenge/P2P2013DP_017.pdf},
+		September, 2013.
 
-\bibitem {box2box} A. Lareida, T. Bocek, S. Golaszewski, C. L\"uthold, M. Weber: \emph{Box2Box - A P2P-based File-Sharing and Synchronization Application;} \url{http://www.csg.uzh.ch/csg/live/teaching/FS13/p2p/challenge/P2P2013DP_017.pdf}, September, 2013.
+	\bibitem {hive2hive}
+		\emph{Hive2Hive: Open-Source Library for P2P-based File Synchronization and Sharing;}
+		\url{http://hive2hive.com/},
+		March, 2015.
 
-\bibitem {hive2hive} \emph{Hive2Hive: Open-Source Library for P2P-based File Synchronization and Sharing;} \url{http://hive2hive.com/}, March, 2015.
+	\bibitem {metadisk}
+		S. Wilkinson, J. Lowry:
+		\emph{Metadisk: Blockchain-based decentralized file storage application;}
+		\url{http://metadisk.org/metadisk.pdf},
+		December, 2014.
 
-\bibitem {metadisk} S. Wilkinson, J. Lowry: \emph{Metadisk: Blockchain-based decentralized file storage application;} \url{http://metadisk.org/metadisk.pdf}, December, 2014.
+	\bibitem {p2pfswu}
+		C. Wu:
+		\emph{Peer-to-Peer Networks;}
+		\url{http://www.csie.nuk.edu.tw/~wuch/course/csf641/csf641-04-storage.pdf},
+		March, 2015.
 
-\bibitem {p2pfswu} C. Wu: \emph{Peer-to-Peer Networks;} \url{http://www.csie.nuk.edu.tw/~wuch/course/csf641/csf641-04-storage.pdf}, March, 2015.
+	\bibitem {p2pfskangasharju}
+		J. Kangasharju:
+		\emph{Peer-to-Peer Networks Chapter 4: Peer-to-Peer Storage;}
+		\url{http://www.cs.helsinki.fi/u/jakangas/Teaching/P2P/P2P-04-Storage.pdf},
+		March, 2015.
 
-\bibitem {p2pfskangasharju} J. Kangasharju: \emph{Peer-to-Peer Networks Chapter 4: Peer-to-Peer Storage;} \url{http://www.cs.helsinki.fi/u/jakangas/Teaching/P2P/P2P-04-Storage.pdf}, March, 2015.
+	\bibitem {storjPDF}
+		S. Wilkinson:
+		\emph{Storj A Peer-to-Peer Cloud Storage Network;}
+		\url{http://storj.io/storj.pdf/},
+		December, 2014.
 
-\bibitem {storjPDF} S. Wilkinson: \emph{Storj A Peer-to-Peer Cloud Storage Network;} \url{http://storj.io/storj.pdf/}, December, 2014.
-
-\bibitem {bittorrentsync} \emph{Sync;} \url{https://www.getsync.com/}, March, 2015.
-
+	\bibitem {bittorrentsync}
+		\emph{Sync;}
+		\url{https://www.getsync.com/},
+		March, 2015.
+		
+	\bibitem {blog:what_is_storj}
+		\emph{What ist Storj?;}
+		\url{http://blog.storj.io/post/87251450053/what-is-storj},
+		March, 2015.
 \end{thebibliography}
