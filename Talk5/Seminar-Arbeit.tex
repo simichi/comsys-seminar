@@ -77,15 +77,34 @@ summary of the findings and highlight those findings in a table comparing the
 file storage systems with each other.
 
 \subsection{Storj} % @Josua
-One can describe Storj (pronounced storage) as a completely decentralized peer-to-peer
+One can describe Storj (pronounced storage) as a completely decentralized and blockchain-based peer-to-peer
 cloud storage system with it's major concern on security and efficiency. Further
-it includes a peer-to-peer payment system service like Bitcoin \cite{blog:what_is_storj}.
+it includes a peer-to-peer payment system service like Bitcoin \cite{storj:blog:what_is_storj}.
 Storj mainly consists of two applications, namely DriveShare (also called Driveminer)
-and Metadisk. The former is used by users to lease their available unused harddrive
-space for other users, as so called farmers, and get money for it. The latter is a
-web-service used for file sharing used by any user that wants to share his files
-(and will have to pay for it).
+and Metadisk. The former is uses unused harddrive space of users and the latter is a
+web-service used for file sharing.
 
+\textbf{Type of distribution:} As mentioned above, Storj consists of two applications;
+DriveShare and Metadisk.
+
+\textbf{Payment scheme:} On DriveShare users, the so called farmers, can lease their unused
+available hard drive space and get paid for this service in Storjcoin X (SJCX), that is
+based on Bitcoin. SJCX rewards, depending on the current crowdsale phase, are between
+38'500 and 32480 SJCX per Bitcoin\cite{storj:crowdsale}. Users of Metadisk will pay
+bitcoin (BTC) for these harddrive space to be able to share their files.
+
+\textbf{Source code availability:} Both applications (and even more Storj applications)
+are fully open-source \cite{storj:github}.
+
+\textbf{Peering scheme:}
+
+\textbf{Encryption:} Before encryption and distribution files are splitted into shards.
+These shards, a multiple of 8 or 32 Bit, are being added a deterministic salt, then uniquely
+encrypted and distributed over the network via a hash. A farmer does not get a whole copy
+(which means in this case all necessary shards of a file) but the shards are distributed
+to multiple farmers \cite{storj:PDF}.
+
+\textbf{Trust:} With the help of a pseudo-reputation system ..
 
 \subsection{Hive2Hive / PeerWasp} % @Simon
 
@@ -148,7 +167,7 @@ storage.
 		\url{http://www.cs.helsinki.fi/u/jakangas/Teaching/P2P/P2P-04-Storage.pdf},
 		March, 2015.
 
-	\bibitem {storjPDF}
+	\bibitem {storj:PDF}
 		S. Wilkinson:
 		\emph{Storj A Peer-to-Peer Cloud Storage Network;}
 		\url{http://storj.io/storj.pdf/},
@@ -159,8 +178,18 @@ storage.
 		\url{https://www.getsync.com/},
 		March, 2015.
 		
-	\bibitem {blog:what_is_storj}
+	\bibitem {storj:blog:what_is_storj}
 		\emph{What ist Storj?;}
 		\url{http://blog.storj.io/post/87251450053/what-is-storj},
+		March, 2015.
+		
+	\bibitem {storj:crowdsale}
+		\emph{Storj - The Crowdsale;}
+		\url{http://storj.io/crowdsale.html},
+		March, 2015.
+
+	\bibitem {storj:github}
+		\emph{Storj Labs;}
+		\url{https://github.com/Storj/},
 		March, 2015.
 \end{thebibliography}
