@@ -14,44 +14,59 @@ This is where the abstract will go.
 
 \newpage
 
-\section{Introduction and Problem Statement} Today, file synchronization and
-storage is demanded more than ever. The average user owns
-multiple devices that are continuously connected to the internet and uses the
-device which is the most practical for his current situation. As a consequence,
-users require their files to be up-to-date at all times regardless of which
-device the user wants to access the files on. A second aspect is that there is
-an ever increasing demand for systems which allow file sharing between users,
-such that multiple people can work on the same files independently, whether at the
-same time or not.
+\section{Introduction and Problem Statement} Today, file synchronization and storage is demanded more than ever. The average user owns multiple devices that are continuously connected to the internet and uses the device which is the most practical for his current situation. As a consequence, users require their files to be up-to-date at all times regardless of which device the user wants to access the files on. A second aspect is that there is an ever increasing demand for systems which allow file sharing between users, such that multiple people can work on the same files independently, whether at the same time or not.
 
-In general, the existing file synchronization and storage systems can be
-categorized into two groups: Client-Server based distributed file storage
-systems (also sometimes referred to as Cloud storage systems) and Peer-to-Peer
-file storage systems. Since giving a comprehensive treatment to both of those
-categories would be beyond the scope of this seminar thesis, the focus here lies on
-Peer-to-Peer file storage systems, henceforth called P2P file storage systems.
+In general, the existing file synchronization and storage systems can be categorized into two groups: Client-Server based distributed file storage systems (also sometimes referred to as Cloud storage systems) and Peer-to-Peer file storage systems. Since giving a comprehensive treatment to both of those categories would be beyond the scope of this seminar thesis, the focus here lies on Peer-to-Peer file storage systems, henceforth called P2P file storage systems.
 
-This seminar thesis aims to give an overview over the current available P2P file
-storage systems, to categorize them according to their different aspects and to
-compare their assets and drawbacks. The findings will also be compared to a
-popular distributed file storage system.
+This seminar thesis aims to give an overview over the current available P2P file storage systems, to categorize them according to their different aspects and to compare their assets and drawbacks. The findings will also be compared to a popular distributed file storage system.
 
 % in chapter xyz we show abc ..
 
 \section{Background} % @Josua
-This section gives a short basic overview over the most
-important topics concerning P2P systems, file storage, and the special
-requirements of P2P file storage systems compared to those of traditional and
-distributed file storage.
+This section gives a short basic overview over the most important topics concerning P2P systems, file storage, and the special requirements of P2P file storage systems compared to those of traditional and distributed file storage.
 
-Peer-to-peer networks often lack of having enough peers continuously connected
-to the network. Where peers are defined as some volunteers helping for important
-files enable fast transfer speed.
+Traditional or \textit{Client-Server file storage}, also called \textbf{1st generation DFS} (Distributed File System) are systems where the cloud is one (or multiple) huge file server storing all the files of multiple clients being on the same network. The main problem in such systems is the file server itself as the \textit{single point of failure} and thus the server becomes the bottleneck.
 
+	\begin{figure}[ht]
+		\begin{center}
+		\includegraphics[scale=0.8]{Talk5/1st_gen_dfs.PNG}
+		\end{center}
+		\caption{1st Generation DFS \cite{p2pfswu}}
+		\label{1st_gen_dfs}
+	\end{figure}
+
+\textit{Distributed file systems} known as \textbf{2nd generation DFS} have some similarities to the traditional system except that files are stored to a cluster of servers, so each server stores parts of the original files. These systems are symmetric and scalable and this makes it trusted and stable.
+
+	\begin{figure}[ht]
+		\begin{center}
+		\includegraphics[scale=0.8]{Talk5/2nd_gen_dfs.PNG}
+		\end{center}
+		\caption{2nd Generation DFS \cite{p2pfswu}}
+		\label{2nd_gen_dfs}
+	\end{figure}
+	
+The \textbf{3rd generation DFS}, namely \textit{peer to peer systems} do not have such a clear structure and separation between 'clients' and 'servers', each peer, which means each device connected to the network being able to store or access data on that network, also called node, is connected to other peers. The whole system is self-organizing, autonomous and heterogeneous. Peers can give access (read/write) to other peers to specific files and as long as these peers are connected to the network, the files are accessible.
+	
+	\begin{figure}[ht]
+		\begin{center}
+		\includegraphics[scale=0.8]{Talk5/3rd_gen_dfs.PNG}
+		\end{center}
+		\caption{3rd Generation DFS \cite{p2pfswu}}
+		\label{3rd_gen_dfs}
+	\end{figure}
+
+Peer-to-peer networks often lack of having enough peers continuously connected to the network. Where peers are defined as some volunteers helping for important files enable fast transfer speed.
+
+Generally four different types of P2P networks are classified:
+\begin{enumerate}
+	\item \textbf{Centralized P2P} which show similarities to the classical client-server model where peers in fact communicate directly with each other but with the hep of a central server.
+	\item \textbf{Hybrid P2P} provide 'super peers' to find other peers and resources. Peers communicate to these super peers until the resource is found and thus the peers can communicate directly. 
+	\item \textbf{Pure P2P}, also known as \textit{unstructured P2P} systems are systems where where all peers are equally powerful communicating without any server or super peer, so peers communicate directly and act as relays to find resources.
+	\item \textbf{Structured P2P} are similar to pure P2P but owever the peers are organized in a specific structure, e.g. a tree to enhance peer and resource detection \cite{ptp-introduction:tomptp}.
+\end{enumerate}
 
 \section{Approach} % @Simon
-This section describes the criteria we chose to classify the
-different file storage systems.
+This section describes the criteria we chose to classify the different file storage systems.
 
 
 \subsection{Criteria}
@@ -69,42 +84,50 @@ different file storage systems.
 \item Status: In what state is the system? Is it available for use, a scientific prototype or canceled?
 \end{itemize}
 
-\section{Comparisons} In this section, we classify and compare four exemplary
-P2P file storage systems according to the classification criteria given in the
-preceding section. We also compare the P2P file storage to a popular distributed
-file storage system to find similarities and differences. At the end, we give a
-summary of the findings and highlight those findings in a table comparing the
-file storage systems with each other.
+\section{Comparisons} In this section, we classify and compare four exemplary P2P file storage systems according to the classification criteria given in the preceding section. We also compare the P2P file storage to a popular distributed file storage system to find similarities and differences. At the end, we give a summary of the findings and highlight those findings in a table comparing thefile storage systems with each other.
 
 \subsection{Storj} % @Josua
-One can describe Storj (pronounced storage) as a completely decentralized and blockchain-based peer-to-peer
-cloud storage system with it's major concern on security and efficiency. Further
-it includes a peer-to-peer payment system service like Bitcoin \cite{storj:blog:what_is_storj}.
-Storj mainly consists of two applications, namely DriveShare (also called Driveminer)
-and Metadisk. The former is uses unused harddrive space of users and the latter is a
-web-service used for file sharing.
+One can describe Storj (pronounced storage) as a completely decentralized and blockchain-based peer-to-peer cloud storage system with it's major concern on security and efficiency. Further it includes a peer-to-peer payment system service like Bitcoin \cite{storj:blog:what_is_storj}. Storj mainly consists of two applications, namely DriveShare (also called Driveminer)
+and Metadisk. The former is uses unused harddrive space of users and the latter is a web-service used for file sharing.
 
-\textbf{Type of distribution:} As mentioned above, Storj consists of two applications;
-DriveShare and Metadisk.
+\textbf{Type of distribution:} As mentioned above, Storj consists of two applications; DriveShare and Metadisk.
 
-\textbf{Payment scheme:} On DriveShare users, the so called farmers, can lease their unused
-available hard drive space and get paid for this service in Storjcoin X (SJCX), that is
-based on Bitcoin. SJCX rewards, depending on the current crowdsale phase, are between
-38'500 and 32480 SJCX per Bitcoin\cite{storj:crowdsale}. Users of Metadisk will pay
-bitcoin (BTC) for these harddrive space to be able to share their files.
+\textbf{Payment scheme:} On DriveShare users, the so called farmers, can lease their unused available hard drive space and get paid for this service in Storjcoin X (SJCX), that is based on Bitcoin. SJCX rewards, depending on the current crowdsale phase, are between 38'500 and 32480 SJCX per Bitcoin\cite{storj:crowdsale}. Users of Metadisk will pay bitcoin (BTC) for these harddrive space to be able to share their files.
 
-\textbf{Source code availability:} Both applications (and even more Storj applications)
-are fully open-source \cite{storj:github}.
+\textbf{Source code availability:} Both applications (and even more Storj applications) are fully open-source \cite{storj:github}.
 
-\textbf{Peering scheme:}
+% not 100% sure about that part ..
+\textbf{Peering scheme:} There are no centralized servers but information of where other shards of a specific file are located is needed. So Storj uses a hybrid approach.
 
-\textbf{Encryption:} Before encryption and distribution files are splitted into shards.
-These shards, a multiple of 8 or 32 Bit, are being added a deterministic salt, then uniquely
-encrypted and distributed over the network via a hash. A farmer does not get a whole copy
-(which means in this case all necessary shards of a file) but the shards are distributed
-to multiple farmers \cite{storj:PDF}.
+\textbf{Encryption:} Before encryption and distribution files are splitted into shards. These shards, a multiple of 8 or 32 Bit, are being added a deterministic salt, then uniquely encrypted and distributed over the network via a hash. A farmer does not get a whole copy (which means in this case all necessary shards of a file) but the shards are distributed to multiple farmers. For enhanced security for sensitive or important data it is also possible to combine shards, e.g. with garbage data or other client's data  \cite{storj:PDF}.
 
-\textbf{Trust:} With the help of a pseudo-reputation system ..
+\textbf{Trust:} With the help of a pseudo-reputation system like advertisements in peer discovery to get data quality and type by tracking it or directly from the network evaluations are made to detect and qualify reputable peers. Storj uses a recommendation system for peers to improve the algorithm \cite{storj:PDF}.
+
+\textbf{Integrity:} The proof of storage and merkle audits, also audits through hash challenge ensure whether a farmer is able to proof he holds a specific file, or more precise; a specific shard and that the shard has not been changed or malicious modified by anything.
+
+Storj uses different so called heartbeats to check whether a file is correctly shattered and stored. Shards are split into pieces and checked for fulfillment of the security requirements and modification detection. 
+
+	\begin{figure}[ht]
+		\begin{center}
+		\includegraphics[scale=0.8]{Talk5/storj_heartbeat.PNG}
+		\end{center}
+		\caption{Heartbeat shard audit \cite{storj:PDF}}
+		\label{storj_heartbeat}
+	\end{figure}
+
+But what happens if a malicious farmer knows the decryption key of a specific file? He won't be able to complete the audits (heartbeats) for all shards since he isn't assigned to all of them. In addition this leads to the prove of redundancy of particular shards which means that each copy of a shard is unique \cite{storj:PDF}.
+
+\textbf{User base:} There are no official data, in addition the system is currently in beta-phase. The forum of Storj has over one thousand members \cite{storj:forum} and lets assume that there are currently even more storj users.
+
+\textbf{Fairness:} Storj has no central devices and through the \textit{Proof-of-Redundancy} it is guaranteed that the files are evenly distributed. Also prices can vary on the base of bandwidth speed and location of the peer and type of hardware provided \cite{storj:PDF}.
+
+\textbf{Fault-tolerance and Availability:} To default there are thee copies of a shard all times accessible which means a shard gets copied to another node if a node goes offline. The user can request more copies in exchange of money. In this way, if a node fails an audit or is unreachable, the network replication process is initiated and thus the network is able to 'heal' itself.
+
+To archive accordance of file location ad integrity over the whole network a block-chain like for Bitcoin according to Satoshi Nakamoto \cite{bitcoin} is used:
+
+\begin{quotation}To use a basic analogy, it is easy to steal a cookie from a cookie jar in a secluded area, but it is hard to do so when the jar is instead located in the middle of a public square, being observed by thousands of people \cite{storj:PDF}.\end{quotation}
+
+\textbf{Status:} Storj is currently in beta phase and already available for use. There are three different test groups; A, B and C each with different conditions (rewarding system, requirements, starting date) \cite {storj:earlyaccess}
 
 \subsection{Hive2Hive / PeerWasp} % @Simon
 
@@ -114,10 +137,7 @@ to multiple farmers \cite{storj:PDF}.
 
 \subsection{Dropbox} % @Andri :D
 
-\section{Summary and Conclusions} In this section, we provide a summary about
-the topics mentioned above and draw conclusions about the current state of the
-available P2P file storage systems and what the future could hold for P2P file
-storage.
+\section{Summary and Conclusions} In this section, we provide a summary about the topics mentioned above and draw conclusions about the current state of the available P2P file storage systems and what the future could hold for P2P file storage.
 
 \begin{thebibliography}{99}
 	\bibitem {aerofs}
@@ -192,4 +212,19 @@ storage.
 		\emph{Storj Labs;}
 		\url{https://github.com/Storj/},
 		March, 2015.
+		
+	\bibitem {ptp-introduction:tomptp}
+		\emph{TomP2P: A P2P-based high performance key-value pair storage library;}
+		\url{http://tomp2p.net/doc/p2p/},
+		April, 2015.
+		
+	\bibitem {storj:forum}
+		\emph{Storjtalk;}
+		\url{https://storjtalk.org/},
+		April, 2015.
+		
+	\bibitem {storj:earlyaccess}
+		\emph{Storj - Early Access;}
+		\url{http://storj.io/earlyaccess.html},
+		April, 2015.
 \end{thebibliography}
