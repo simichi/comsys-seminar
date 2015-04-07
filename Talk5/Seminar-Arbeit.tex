@@ -134,6 +134,41 @@ To archive accordance of file location ad integrity over the whole network a blo
 \subsection{BitTorrent Sync} % @Simon
 
 \subsection{AeroFS} % @Josua
+AeroFS is a dedicated software client from Air Computing providing basic peer to peer solutions but some advanced functionality concerning advanced security and encryption, error and data loss prevention and everything for low costs \cite{aerofs}.
+
+\textbf{Type of distribution:} AeroFS serves a software client for users and a admin dash panel for enhanced manageability.
+
+\textbf{Payment scheme:} The basic pricing plan (Team) is free up to a user-base size of 30 \cite{aerofs:blog:30_users_free} and the business plan starts above 31 users and according to the size of the user-base the billing is done; e.g. for 40 users and the cost totals in \$600, the biggest available size on the website is 1000 users for \$15'000 per month \cite{aerofs:pricing}.
+
+\textbf{Source code availability:} AeroFS is currently closed source.
+
+\textbf{Peering scheme:} There are basically two different peering schemes, one without Air servers, where data can be exchanged within the local area network for enhanced up-link time in comparison to internet up-links \cite{aerofs:peering_scheme} and a centralized solution with the AeroFS Team Server to back up files on a central location \cite{aerofs:peering_scheme_2}. Thus Air Computing uses a hybrid solution as a peering scheme.
+
+\textbf{Encryption:} An end-to-end encryption solution is provided, files are encrypted before transaction using AES-256 with 2048-bit RSA and only the recipient is able to decrypt the data transfer \cite{aerofs:security}. On the servers of AeroFS are only usernames, the hashes of the passwords and the names of the access authorized users from folders stored \cite{aerofs:security_2}.
+
+\textbf{Trust:} The amount of users from a borrower is of fixed size (but can grow), also using the AeroFS Applicance as root certificate, no other footprint will be accepted by the clients \cite{aerofs:security}.
+
+\textbf{Integrity:} There are three different types of storage for the AeroFS Team Server:
+\begin{enumerate}
+\item \textbf{Linked Storage}: creates a read/write copy of organization's files on the team server. Files will be browseable.
+\item \textbf{Block Storage}: compresses and de-duplicates files for enlarged disk space. Files won't be browseable.
+\item \textbf{S3 Storage}: Data shared by users of an organization is stored and backed up on Amazon servers compressed and de-duplicated. Files won't be browseable \cite{aerofs:storage_types}.
+\end{enumerate}
+
+\textbf{User base:} According to the webpage \cite{aerofs} there are currently \textbf{50'000+} users.
+
+\textbf{Fairness:} Three different cloud options:
+\begin{enumerate}
+\item \textbf{Private Cloud}: Provides private Web Administration, manage registration and authentication of users and private Certificate Authority (CA) to manage the AeroFS public key infrastructure (PKI) for client applications
+\item \textbf{Hybrid Cloud}: Supply a centrally managed file sharing platform for the employees and registration, authentication and user management is done outside the network by AeroFS.
+\item \textbf{Team Server} (optional Addon): Light weight client to enable backup of files and 24/7 availability \cite{aerofs:cloud_types}.
+\end{enumerate}
+If a hard-drive gets too full, the versioning systems keeps track of the oldest copies and deletes them if the user runs out of space \cite{aerofs:USTO.RE}.
+
+\textbf{Fault-tolerance and Availability:} 
+% research needed
+
+\textbf{Status:} Available for use and costs-free.
 
 \subsection{Dropbox} % @Andri :D
 
@@ -227,4 +262,52 @@ To archive accordance of file location ad integrity over the whole network a blo
 		\emph{Storj - Early Access;}
 		\url{http://storj.io/earlyaccess.html},
 		April, 2015.
+		
+	\bibitem {aerofs:blog:30_users_free}
+		Y. Sagalov:
+		\emph{AeroFS is now free up to 30 users;}
+		\url{https://www.aerofs.com/blog/aerofs-is-now-free-up-to-30-users/},
+		April, 2015.
+		
+	\bibitem {aerofs:pricing}
+		\emph{Pricing, AeroFS;}
+		\url{https://www.aerofs.com/pricing/},
+		April, 2015.
+		
+	\bibitem {aerofs:peering_scheme}
+		\emph{Security Share and Transfer Large Files, Enterprise Solution, Aerofs;}
+		\url{https://www.aerofs.com/solutions/transfer-large-files/},
+		April, 2015.
+		
+	\bibitem {aerofs:peering_scheme_2}
+		\emph{Flexible Storage for the Enterprise;}
+		\url{https://www.aerofs.com/features/flexible-storage/},
+		April, 2015.
+		
+	\bibitem {aerofs:security}
+		\emph{Security, AeroFS;}
+		\url{https://www.aerofs.com/security/},
+		April, 2015.
+		
+	\bibitem {aerofs:security_2}
+		\emph{AeroFS: Das bessere Dropbox? - Golem.de;}
+		\url{http://www.golem.de/news/aerofs-das-bessere-dropbox-1304-98485.html},
+		April, 2015.
+		
+	\bibitem {aerofs:storage_types}
+		\emph{What Storage Types Can I Use With The AeroFS Team Server? - AeroFS Support;}
+		\url{https://support.aerofs.com/hc/en-us/articles/203434524},
+		April, 2015.
+		
+	\bibitem {aerofs:cloud_types}
+		\emph{Enterprise Solution - Deployment Options, AeroFS;}
+		\url{https://www.aerofs.com/features/deployment-options/},
+		April, 2015.
+		
+	\bibitem {aerofs:USTO.RE}
+		Dur\~ao et al
+		\emph{USTO.RE: A Private Cloud Storage Software System;}
+		\url{http://www.researchgate.net/profile/Vinicius_Garcia/publication/262284124_USTO.RE_a_private_cloud_storage_software_system/links/5457a3f30cf2cf51648219ed.pdf},
+		April, 2015.
+		
 \end{thebibliography}
