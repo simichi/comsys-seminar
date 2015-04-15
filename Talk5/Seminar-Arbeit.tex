@@ -66,21 +66,34 @@ Generally four different types of P2P networks are classified:
 \end{enumerate}
 
 \section{Approach} % @Simon
-This section describes the criteria we chose to classify the different file storage systems.
-
+This section describes the criteria we chose to classify the different file storage systems. The criteria were chosen to fit what we feel are the most important aspect that a prospective user considers before making the decision of which file storage system to use. The following criteria were chosen for classification and a justification for each choice is given.
 
 \subsection{Criteria}
 \begin{itemize}
-\item Type of Distribution: Is the system only a Library or a dedicated software client
+\item Type of Distribution: Is the system only a library or a dedicated software client
+This aspect determines the ease of use of the system, but also if a expert user can build his or her own application on top of the provided system.
+
 \item Payment Scheme: Is the system free or paid? Who gets paid what under which circumstances?
+Of course, a user is more likely to use a system the cheaper it is. However, there is also the possibility for users to earn money, e.g., by offering up their excess storage space.
+
 \item Source code availability: Is the system open-source or closed source?
-\item Peering Scheme: How are peers connected, how do they communicate and what messages do they interchange (pure, hybrid, centralized, structured peering)
-\item Encryption: Are the communication between peers and the files stored encrypted and with what algorithm?
-\item Trust: How is trust established between peers?
-\item Integrity: How are files and communication protected against fraudulent users and attacks?
+This aspect is most relevant to application developers but might also be of interest for conventional users. If a system is open source, an application developers can make changes to the program code and may also contribute to future releases of the system. However, this can also be detrimental. Programmers may be able to change certain parts of their application which in turn may bypass security and fairness concepts normally applied in the system. For example, it might be possible for a malicious programmer to disable storage of data from other users while he or she stores large amounts of data of their own on other peers. In a different, more extreme example, a malicious programmer can commit changes to the public source code that contains backdoors to the encryption algorithms, allowing the programmer to access files which he or she is not normally authorized to access. The feasibility of this example depends on how many people are involved with the development of the open source project and how skilled the owners of the code are at detecting such malicious changes.
+Closed source code can also be disadvantageous. If the source code is not accessible, users have to trust the developer that the security algorithms are properly implemented and that their data is only accessible to authorized parties. With open source code, an adept user can at all times verify the quality of the security scheme. Also, the more developers that are actively working on the open source project and verifying commits, the smaller is the possibility of malicious code sneaking in.
+
+\item Peering Scheme: How are peers connected, where is user data stored, how do users communicate and what messages do they interchange?
+This classification criteria describes the technical aspects of the peer-to-peer system. As described in Section 2 (include refrence) there are many different forms of peering schemes for peer-to-peer networks. It also may be important for users to know how and where their data is physically stored in the network. Some users may be weary of storing their personal data on the machine of a stranger, even if the data is divided into chunks and encrypted. This aspect also deals with how peers can share data with each other and which communication possibilities exist. 
+
+\item Encryption: Are the communication between peers and the files stored encrypted and with which algorithm?
+
+\item Trust and Integrity: How is trust established between peers? How are files and communication protected against fraudulent users and attacks?
+
 \item User base: How many users does the system currently have? Is the system intended for businesses or private users?
-\item Fairness: How is the workload distributed in the system especially considering the heterogeneous hardware used by the peers? 
-\item Fault-tolerance and Availability: How does the system guarantee that files are available to the users at all time? 
+Firstly, the amount of users already using the system may be an indication of the quality of the system to prospective users. Also, there exists the network effect which may make it more useful for users to use a system which is already widely established instead of one which is only used by few people. Additionally, an open source system with many active users and developers may be more secure than ones with a smaller install base. However, a larger user base also makes the system a more desirable target of attack for malicious users. Secondly, the feature set of a system can also be geared more towards business applications instead of private users. It is usually more prudent to choose a system that is more suitable to the goals of the user.
+
+\item Fairness: How is the workload distributed in the system especially considering the heterogeneous hardware used by the peers?
+
+\item Fault-tolerance and Availability: How does the system guarantee that files are available to the users at all time?
+
 \item Status: In what state is the system? Is it available for use, a scientific prototype or canceled?
 \end{itemize}
 
@@ -129,9 +142,49 @@ To archive accordance of file location ad integrity over the whole network a blo
 
 \textbf{Status:} Storj is currently in beta phase and already available for use. There are three different test groups; A, B and C each with different conditions (rewarding system, requirements, starting date) \cite {storj:earlyaccess}
 
-\subsection{Hive2Hive / PeerWasp} % @Simon
+\subsection{Hive2Hive} % @Simon 
+Hive2Hive (formerly known as Box2Box) is an open source peer-to-peer file sharing and synchronization library that started out as part of a course challenge task project and was further improved in a graduate student's project at the Communication Systems Group at the University of Zurich. (https://github.com/Hive2Hive/Hive2Hive/wiki/About-Us) It is built on top of the TomP2P library (an open source Distributed Hash Table (DHT) based key-value store) which was also developed at the Communication Systems Group. (http://tomp2p.net/)
+
+\textbf{Type of Distribution}
+Hive2Hive itself is a library that provides that functionality of file sharing and synchronization. However, an end-user GUI application called Peerwasp (http://www.peerwasp.com/) is currently in development that uses Hive2Hive as a basis.
+
+\textbf{Payment Scheme}
+Hive2Hive is open source and is like most open source software free of charge to use.
+
+\textbf{Source code availability}
+The source code of Hive2Hive, TomP2P as well as Peerwasp is freely available on Github. (https://github.com/Hive2Hive/Hive2Hive) (https://github.com/tomp2p/TomP2P) (https://github.com/PeerWasp/PeerWasp)
+
+\textbf{Peering Scheme}
+
+\textbf{Encryption}
+
+\textbf{Trust}
+
+\textbf{Integrity}
+
+\textbf{User base}
+
+\textbf{Fairness}
+
+\textbf{Fault-tolerance and Availability}
+
+\textbf{Status}
 
 \subsection{BitTorrent Sync} % @Simon
+
+\begin{itemize}
+\item Type of Distribution: Is the system only a library or a dedicated software client
+\item Payment Scheme: Is the system free or paid? Who gets paid what under which circumstances?
+\item Source code availability: Is the system open-source or closed source?
+\item Peering Scheme: How are peers connected, how do they communicate and what messages do they interchange (pure, hybrid, centralized, structured peering)
+\item Encryption: Are the communication between peers and the files stored encrypted and with what algorithm?
+\item Trust: How is trust established between peers?
+\item Integrity: How are files and communication protected against fraudulent users and attacks?
+\item User base: How many users does the system currently have? Is the system intended for businesses or private users?
+\item Fairness: How is the workload distributed in the system especially considering the heterogeneous hardware used by the peers? 
+\item Fault-tolerance and Availability: How does the system guarantee that files are available to the users at all time? 
+\item Status: In what state is the system? Is it available for use, a scientific prototype or canceled?
+\end{itemize}
 
 \subsection{AeroFS} % @Josua
 AeroFS is a dedicated software client from Air Computing providing basic peer to peer solutions but some advanced functionality concerning advanced security and encryption, error and data loss prevention and everything for low costs \cite{aerofs}.
