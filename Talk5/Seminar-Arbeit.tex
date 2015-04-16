@@ -125,9 +125,9 @@ and Metadisk. The former is uses unused harddrive space of users and the latter 
 
 \textbf{Encryption:} Before encryption and distribution files are splitted into shards. These shards, a multiple of 8 or 32 Bit, are being added a deterministic salt, then uniquely encrypted and distributed over the network via a hash. A farmer does not get a whole copy (which means in this case all necessary shards of a file) but the shards are distributed to multiple farmers. For enhanced security for sensitive or important data it is also possible to combine shards, e.g. with garbage data or other client's data  \cite{storj:PDF}.
 
-\textbf{Trust:} With the help of a pseudo-reputation system like advertisements in peer discovery to get data quality and type by tracking it or directly from the network evaluations are made to detect and qualify reputable peers. Storj uses a recommendation system for peers to improve the algorithm \cite{storj:PDF}.
+\textbf{Trust and Integrity} With the help of a pseudo-reputation system like advertisements in peer discovery to get data quality and type by tracking it or directly from the network evaluations are made to detect and qualify reputable peers. Storj uses a recommendation system for peers to improve the algorithm \cite{storj:PDF}.
 
-\textbf{Integrity:} The proof of storage and merkle audits, also audits through hash challenge ensure whether a farmer is able to proof he holds a specific file, or more precise; a specific shard and that the shard has not been changed or malicious modified by anything.
+The proof of storage and merkle audits, also audits through hash challenge ensure whether a farmer is able to proof he holds a specific file, or more precise; a specific shard and that the shard has not been changed or malicious modified by anything.
 
 Storj uses different so called heartbeats to check whether a file is correctly shattered and stored. Shards are split into pieces and checked for fulfillment of the security requirements and modification detection. 
 
@@ -172,7 +172,7 @@ Structured P2P based on the TomP2P DHT. Each peer has an id. Files are divided i
 AES for symmetrical, RSA for asymmetrical
 The keys are stored in the user identity file stored in the dht, which is only accessible by the user which the identity belongs to.
 
-\textbf{Trust & Integrity}
+\textbf{Trust \& Integrity}
 There are two types of file access permission that can be given to other peers, read access and read/write access. Peers without any of those permissions cannot access a file. File chunks are signed with an MD5 hash to guarantee integrity. Peers have to verify the identity of the peers that they want to share files with themselves.
 
 \textbf{User base}
@@ -199,7 +199,7 @@ There is not really a network. Files cannot be stored per se, only synchronized 
 
 \textbf{Encryption}
 
-\textbf{Trust & Integrity}
+\textbf{Trust \& Integrity}
 
 \textbf{User base}
 \textbf{Fairness}
@@ -219,9 +219,9 @@ AeroFS is a dedicated software client from Air Computing providing basic peer to
 
 \textbf{Encryption:} An end-to-end encryption solution is provided, files are encrypted before transaction using AES-256 with 2048-bit RSA and only the recipient is able to decrypt the data transfer \cite{aerofs:security}. On the servers of AeroFS are only usernames, the hashes of the passwords and the names of the access authorized users from folders stored \cite{aerofs:security_2}.
 
-\textbf{Trust:} The amount of users from a borrower is of fixed size (but can grow), also using the AeroFS Applicance as root certificate, no other footprint will be accepted by the clients \cite{aerofs:security}.
+\textbf{Trust and Integrity} The amount of users from a borrower is of fixed size (but can grow), also using the AeroFS Applicance as root certificate, no other footprint will be accepted by the clients \cite{aerofs:security}.
 
-\textbf{Integrity:} There are three different types of storage for the AeroFS Team Server:
+There are three different types of storage for the AeroFS Team Server:
 \begin{enumerate}
 \item \textbf{Linked Storage}: creates a read/write copy of organization's files on the team server. Files will be browseable.
 \item \textbf{Block Storage}: compresses and de-duplicates files for enlarged disk space. Files won't be browseable.
@@ -250,7 +250,7 @@ If a hard-drive gets too full, the versioning systems keeps track of the oldest 
 \textbf{Source code availability}
 \textbf{Peering Scheme}
 \textbf{Encryption}
-\textbf{Trust & Integrity}
+\textbf{Trust \& Integrity}
 \textbf{User base}
 \textbf{Fairness}
 \textbf{Fault-tolerance and Availability}
