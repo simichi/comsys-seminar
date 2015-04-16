@@ -76,12 +76,23 @@ Generally four different types of P2P networks are classified: (give examples)
 
 Peer-to-peer networks often lack of having enough peers continuously connected to the network. Where peers are defined as some volunteers helping for important files enable fast transfer speed.
 
+\subsection{Problems of Common Sync and Sharing Services}
+(Change formulation, include reference http://hive2hive.com/)Although many well-known synchronization and sharing services exist, most of them exhibit the following drawbacks:
+
+    centralized client-server approaches, data resides in large, external data centers
+    single-point-of-failure, vulnerable to targeted attacks
+    often not scalable
+    private data is not encrypted
+    user control is revoked, no control over who has access to the private data
+    user is bound to the respective pricing and terms of service
+    no version control, no conflict management
+
 \section{Approach} % @Simon
 This section describes the criteria we chose to classify the different file storage systems. The criteria were chosen to fit what we feel are the most important aspect that a prospective user considers before making the decision of which file storage system to use. The following criteria were chosen for classification and a justification for each choice is given.
 
 \subsection{Criteria}
 \begin{itemize}
-\item Type of Distribution: Is the system only a library or a dedicated software client
+\item Type of Distribution: Is the system only a library or a dedicated software client?
 This aspect determines the ease of use of the system, but also if a expert user can build his or her own application on top of the provided system.
 
 \item Payment Scheme: Is the system free or paid? Who gets paid what under which circumstances?
@@ -246,14 +257,23 @@ If a hard-drive gets too full, the versioning systems keeps track of the oldest 
 \subsection{Dropbox} % @Andri :D
 
 \textbf{Type of Distribution}
+Available through their website but GUI application also exists.
 \textbf{Payment Scheme}
+Freemium, base use is free, for more storage, a paid subscription is available.
 \textbf{Source code availability}
+Closed source
 \textbf{Peering Scheme}
+Data is stored in the Amazon S3 cloud.
 \textbf{Encryption}
+
 \textbf{Trust \& Integrity}
+Data is encrypted but keys are stored on dropbox servers, not on client machines
 \textbf{User base}
+many
 \textbf{Fairness}
+not applicable
 \textbf{Fault-tolerance and Availability}
+bö
 \textbf{Status}
 
 \section{Summary and Conclusions} In this section, we provide a summary about the topics mentioned above and draw conclusions about the current state of the available P2P file storage systems and what the future could hold for P2P file storage.
