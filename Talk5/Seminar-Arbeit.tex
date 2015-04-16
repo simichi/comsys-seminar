@@ -25,6 +25,10 @@ This seminar thesis aims to give an overview over the current available P2P file
 \section{Background} % @Josua
 This section gives a short basic overview over the most important topics concerning P2P systems, file storage, and the special requirements of P2P file storage systems compared to those of traditional and distributed file storage.
 
+\subsection{File Storage}
+
+Definition
+
 Traditional or \textit{Client-Server file storage}, also called \textbf{1st generation DFS} (Distributed File System) are systems where the cloud is one (or multiple) huge file server storing all the files of multiple clients being on the same network. The main problem in such systems is the file server itself as the \textit{single point of failure} and thus the server becomes the bottleneck.
 
 	\begin{figure}[ht]
@@ -55,15 +59,22 @@ The \textbf{3rd generation DFS}, namely \textit{peer to peer systems} do not hav
 		\label{3rd_gen_dfs}
 	\end{figure}
 
-Peer-to-peer networks often lack of having enough peers continuously connected to the network. Where peers are defined as some volunteers helping for important files enable fast transfer speed.
+\subsection{Peer-to-Peer}
+Definition (Move away from traditional client-server architecture where one machine acts as a server and only answers requests by clients and clients send those requests. In P2P, the roles of the client and server are combined into one machine (hereforth called peer). Peers then can form a network of peers, i.e., a peer-to-peer network.)
 
-Generally four different types of P2P networks are classified:
+Advantages and disadvantages (no single point of failure, peering may be complicated, may be difficult to prevent freeloading, security)
+
+Maybe some pictures
+
+Generally four different types of P2P networks are classified: (give examples)
 \begin{enumerate}
-	\item \textbf{Centralized P2P} which show similarities to the classical client-server model where peers in fact communicate directly with each other but with the hep of a central server.
-	\item \textbf{Hybrid P2P} provide 'super peers' to find other peers and resources. Peers communicate to these super peers until the resource is found and thus the peers can communicate directly. 
-	\item \textbf{Pure P2P}, also known as \textit{unstructured P2P} systems are systems where where all peers are equally powerful communicating without any server or super peer, so peers communicate directly and act as relays to find resources.
-	\item \textbf{Structured P2P} are similar to pure P2P but owever the peers are organized in a specific structure, e.g. a tree to enhance peer and resource detection \cite{ptp-introduction:tomptp}.
+	\item \textbf{Centralized P2P} which show similarities to the classical client-server model where peers in fact communicate directly with each other but with the help of a central server. (Napster, central peer serves as directory)
+	\item \textbf{Hybrid P2P} provide 'super peers' to find other peers and resources. Peers communicate to these super peers until the resource is found and thus the peers can communicate directly. (Skype)
+	\item \textbf{Pure P2P}, also known as \textit{unstructured P2P} systems are systems where where all peers are equally powerful communicating without any server or super peer, so peers communicate directly and act as relays to find resources. (BitTorrent)
+	\item \textbf{Structured P2P} are similar to pure P2P but however the peers are organized in a specific structure, e.g. a tree to enhance peer and resource detection \cite{ptp-introduction:tomptp}. (Explain DHT)
 \end{enumerate}
+
+Peer-to-peer networks often lack of having enough peers continuously connected to the network. Where peers are defined as some volunteers helping for important files enable fast transfer speed.
 
 \section{Approach} % @Simon
 This section describes the criteria we chose to classify the different file storage systems. The criteria were chosen to fit what we feel are the most important aspect that a prospective user considers before making the decision of which file storage system to use. The following criteria were chosen for classification and a justification for each choice is given.
@@ -80,7 +91,7 @@ Of course, a user is more likely to use a system the cheaper it is. However, the
 This aspect is most relevant to application developers but might also be of interest for conventional users. If a system is open source, an application developers can make changes to the program code and may also contribute to future releases of the system. However, this can also be detrimental. Programmers may be able to change certain parts of their application which in turn may bypass security and fairness concepts normally applied in the system. For example, it might be possible for a malicious programmer to disable storage of data from other users while he or she stores large amounts of data of their own on other peers. In a different, more extreme example, a malicious programmer can commit changes to the public source code that contains backdoors to the encryption algorithms, allowing the programmer to access files which he or she is not normally authorized to access. The feasibility of this example depends on how many people are involved with the development of the open source project and how skilled the owners of the code are at detecting such malicious changes.
 Closed source code can also be disadvantageous. If the source code is not accessible, users have to trust the developer that the security algorithms are properly implemented and that their data is only accessible to authorized parties. With open source code, an adept user can at all times verify the quality of the security scheme. Also, the more developers that are actively working on the open source project and verifying commits, the smaller is the possibility of malicious code sneaking in.
 
-\item Peering Scheme: How are peers connected, where is user data stored, how do users communicate and what messages do they interchange?
+\item Peering Scheme: How are peers connected, where is user data stored, how do users communicate and what messages do they exchange?
 This classification criteria describes the technical aspects of the peer-to-peer system. As described in Section 2 (include refrence) there are many different forms of peering schemes for peer-to-peer networks. It also may be important for users to know how and where their data is physically stored in the network. Some users may be weary of storing their personal data on the machine of a stranger, even if the data is divided into chunks and encrypted. This aspect also deals with how peers can share data with each other and which communication possibilities exist. 
 
 \item Encryption: Are the communication between peers and the files stored encrypted and with which algorithm?
@@ -155,36 +166,45 @@ Hive2Hive is open source and is like most open source software free of charge to
 The source code of Hive2Hive, TomP2P as well as Peerwasp is freely available on Github. (https://github.com/Hive2Hive/Hive2Hive) (https://github.com/tomp2p/TomP2P) (https://github.com/PeerWasp/PeerWasp)
 
 \textbf{Peering Scheme}
+Structured P2P based on the TomP2P DHT. Each peer has an id. Files are divided into chunks, a random id is generated for each chunk and stored in the metadata file of the file, the chunk is stored at the peer with the id closest to the hashed id of the chunk. The metadata file is also stored in the dht, but is only accessible to the creator of the file. ...
 
 \textbf{Encryption}
+AES for symmetrical, RSA for asymmetrical
+The keys are stored in the user identity file stored in the dht, which is only accessible by the user which the identity belongs to.
 
-\textbf{Trust}
-
-\textbf{Integrity}
+\textbf{Trust & Integrity}
+There are two types of file access permission that can be given to other peers, read access and read/write access. Peers without any of those permissions cannot access a file. File chunks are signed with an MD5 hash to guarantee integrity. Peers have to verify the identity of the peers that they want to share files with themselves.
 
 \textbf{User base}
+No idea
 
 \textbf{Fairness}
+Since ids for file chunks are generated randomly, the file chunks are distributed equally between all peers in the long run. No prevention from peers storing an extraordinary amount of files
 
 \textbf{Fault-tolerance and Availability}
+File chunks are replicated 3 times but higher amounts can be configured
 
 \textbf{Status}
+Mature library with active development
 
 \subsection{BitTorrent Sync} % @Simon
 
-\begin{itemize}
-\item Type of Distribution: Is the system only a library or a dedicated software client
-\item Payment Scheme: Is the system free or paid? Who gets paid what under which circumstances?
-\item Source code availability: Is the system open-source or closed source?
-\item Peering Scheme: How are peers connected, how do they communicate and what messages do they interchange (pure, hybrid, centralized, structured peering)
-\item Encryption: Are the communication between peers and the files stored encrypted and with what algorithm?
-\item Trust: How is trust established between peers?
-\item Integrity: How are files and communication protected against fraudulent users and attacks?
-\item User base: How many users does the system currently have? Is the system intended for businesses or private users?
-\item Fairness: How is the workload distributed in the system especially considering the heterogeneous hardware used by the peers? 
-\item Fault-tolerance and Availability: How does the system guarantee that files are available to the users at all time? 
-\item Status: In what state is the system? Is it available for use, a scientific prototype or canceled?
-\end{itemize}
+\textbf{Type of Distribution}
+\textbf{Payment Scheme}
+\textbf{Source code availability}
+BitTorrent Sync is currently closed source.
+
+\textbf{Peering Scheme}
+There is not really a network. Files cannot be stored per se, only synchronized between multiple devices. But sharing is also possible. One device which contains the file must be online for synchronization to happen.
+
+\textbf{Encryption}
+
+\textbf{Trust & Integrity}
+
+\textbf{User base}
+\textbf{Fairness}
+\textbf{Fault-tolerance and Availability}
+\textbf{Status}
 
 \subsection{AeroFS} % @Josua
 AeroFS is a dedicated software client from Air Computing providing basic peer to peer solutions but some advanced functionality concerning advanced security and encryption, error and data loss prevention and everything for low costs \cite{aerofs}.
@@ -224,6 +244,17 @@ If a hard-drive gets too full, the versioning systems keeps track of the oldest 
 \textbf{Status:} Available for use and costs-free.
 
 \subsection{Dropbox} % @Andri :D
+
+\textbf{Type of Distribution}
+\textbf{Payment Scheme}
+\textbf{Source code availability}
+\textbf{Peering Scheme}
+\textbf{Encryption}
+\textbf{Trust & Integrity}
+\textbf{User base}
+\textbf{Fairness}
+\textbf{Fault-tolerance and Availability}
+\textbf{Status}
 
 \section{Summary and Conclusions} In this section, we provide a summary about the topics mentioned above and draw conclusions about the current state of the available P2P file storage systems and what the future could hold for P2P file storage.
 
