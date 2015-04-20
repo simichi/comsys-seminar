@@ -14,7 +14,8 @@ This is where the abstract will go.
 
 \newpage
 
-\section{Introduction and Problem Statement} Today, file synchronization and storage is demanded more than ever. The average user owns multiple devices that are continuously connected to the internet and uses the device which is the most practical for his current situation. As a consequence, users require their files to be up-to-date at all times regardless of which device the user wants to access the files on. A second aspect is that there is an ever increasing demand for systems which allow file sharing between users, such that multiple people can work on the same files independently, whether at the same time or not.
+\section{Introduction and Problem Statement}
+Today, file synchronization and storage is demanded more than ever. The average user owns multiple devices that are continuously connected to the internet and uses the device which is the most practical for his current situation. As a consequence, users require their files to be up-to-date at all times regardless of which device the user wants to access the files on. A second aspect is that there is an ever increasing demand for systems which allow file sharing between users, such that multiple people can work on the same files independently, whether at the same time or not.
 
 In general, the existing file synchronization and storage systems can be categorized into two groups: Client-Server based distributed file storage systems (also sometimes referred to as Cloud storage systems) and Peer-to-Peer file storage systems. Since giving a comprehensive treatment to both of those categories would be beyond the scope of this seminar thesis, the focus here lies on Peer-to-Peer file storage systems, henceforth called P2P file storage systems.
 
@@ -26,41 +27,48 @@ This seminar thesis aims to give an overview over the current available P2P file
 This section gives a short basic overview over the most important topics concerning P2P systems, file storage, and the special requirements of P2P file storage systems compared to those of traditional and distributed file storage.
 
 \subsection{File Storage}
-
-Definition
+According to The Free Dictionary\cite{thefreedictionary} the term 'file storage' describes:
+\begin{quote}
+A generic term for warehousing electronic files. It may refer to local storage in a PC or tablet or remote storage on the Internet. The primary storage devices are hard drives and solid state drives.
+\end{quote}
 
 Traditional or \textit{Client-Server file storage}, also called \textbf{1st generation DFS} (Distributed File System) are systems where the cloud is one (or multiple) huge file server storing all the files of multiple clients being on the same network. The main problem in such systems is the file server itself as the \textit{single point of failure} and thus the server becomes the bottleneck.
 
-	\begin{figure}[ht]
+	\begin{figure}[H]
 		\begin{center}
-		\includegraphics[scale=0.8]{Talk5/1st_gen_dfs.PNG}
+		\includegraphics[scale=0.2]{Talk5/1st_gen_dfs.PNG}
 		\end{center}
-		\caption{1st Generation DFS \cite{p2pfswu}}
+		\caption{1st Generation DFS \cite{wikimedia:p2p}}
 		\label{1st_gen_dfs}
 	\end{figure}
 
 \textit{Distributed file systems} known as \textbf{2nd generation DFS} have some similarities to the traditional system except that files are stored to a cluster of servers, so each server stores parts of the original files. These systems are symmetric and scalable and this makes it trusted and stable.
 
-	\begin{figure}[ht]
+	\begin{figure}[H]
 		\begin{center}
-		\includegraphics[scale=0.8]{Talk5/2nd_gen_dfs.PNG}
+		\includegraphics[scale=0.2]{Talk5/2nd_gen_dfs.PNG}
 		\end{center}
-		\caption{2nd Generation DFS \cite{p2pfswu}}
+		\caption{2nd Generation DFS \cite{wikimedia:p2p}}
 		\label{2nd_gen_dfs}
 	\end{figure}
 	
 The \textbf{3rd generation DFS}, namely \textit{peer to peer systems} do not have such a clear structure and separation between 'clients' and 'servers', each peer, which means each device connected to the network being able to store or access data on that network, also called node, is connected to other peers. The whole system is self-organizing, autonomous and heterogeneous. Peers can give access (read/write) to other peers to specific files and as long as these peers are connected to the network, the files are accessible.
 	
-	\begin{figure}[ht]
+	\begin{figure}[H]
 		\begin{center}
-		\includegraphics[scale=0.8]{Talk5/3rd_gen_dfs.PNG}
+		\includegraphics[scale=0.2]{Talk5/3rd_gen_dfs.PNG}
 		\end{center}
-		\caption{3rd Generation DFS \cite{p2pfswu}}
+		\caption{3rd Generation DFS \cite{wikimedia:p2p}}
 		\label{3rd_gen_dfs}
 	\end{figure}
 
 \subsection{Peer-to-Peer}
-Definition (Move away from traditional client-server architecture where one machine acts as a server and only answers requests by clients and clients send those requests. In P2P, the roles of the client and server are combined into one machine (hereforth called peer). Peers then can form a network of peers, i.e., a peer-to-peer network.)
+In this section, a deeper understanding of the main ideas and goals of Peer-to-Peer systems will be given. Tough it is not possible to go very deep in this topic, the idea is to give an overview and a basis for the related work in following sections. First of all a very detailed definition of what Peer-to-Peer systems can be described as:
+\begin{quote}
+A distributed network architecture may be called a Peer-to-Peer (P-to-P, P2P,...) network, if the participants share a part of their own hardware resources (processing power, storage capacity, network link capacity, printers,...). These shared resources are necessary to provide the Service and content offered by the network (e.g. file sharing or shared workspaces for collaboration). They are accessible by other peers directly, without passing intermediary entities. The participants of such a network are thus resource (Service and content) providers as well as resource (Service and content) requestors (Servent-concept).\cite{ptp:definition}
+\end{quote}
+
+Apparently the concept behind P2P systems is to move away from the traditional client-server architecture to get as far away from their withdrawals as possible. Instead of having one machine acting as a server only answering requests by clients when these clients send those requests. In P2P, the roles of the client and server are combined into one machine (hereforth called peer). Peers then can form a network of peers, i.e., a peer-to-peer network.)
 
 Advantages and disadvantages (no single point of failure, peering may be complicated, may be difficult to prevent freeloading, security)
 
@@ -414,9 +422,25 @@ bö
 		April, 2015.
 		
 	\bibitem {aerofs:USTO.RE}
-		Dur\~ao et al
+		Dur\~ao et al:
 		\emph{USTO.RE: A Private Cloud Storage Software System;}
 		\url{http://www.researchgate.net/profile/Vinicius_Garcia/publication/262284124_USTO.RE_a_private_cloud_storage_software_system/links/5457a3f30cf2cf51648219ed.pdf},
+		April, 2015.
+		
+	\bibitem {wikimedia:p2p}
+		\emph{Peer-to-peer;}
+		\url{http://en.wikipedia.org/wiki/Peer_to_peer},
+		April, 2015.
+		
+	\bibitem {thefreedictionary}
+		\emph{File Storage Definition;}
+		\url{http://encyclopedia2.thefreedictionary.com/file+storage},
+		April, 2015.
+		
+	\bibitem {ptp:definition}
+		R. Schollmeier:
+		\emph{A Definition of Peer-to-Peer Networking for the Classification of Peer-to- Peer Architectures and Applications;}
+		\url{http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=990434&tag=1},
 		April, 2015.
 		
 \end{thebibliography}
