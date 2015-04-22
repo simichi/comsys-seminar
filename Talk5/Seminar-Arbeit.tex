@@ -28,50 +28,45 @@ In chapter \ref{sec:background} we want to give a short overview  of the backgro
 This section gives a short basic overview over the most important topics concerning P2P systems, file storage, and the special requirements of P2P file storage systems compared to those of traditional and distributed file storage. In the a summary of the most common drawbacks of these previous but still used systems compared to peer-to-peer systems is shown.
 
 \subsection{File Storage}
-According to The Free Dictionary\cite{thefreedictionary} the term 'file storage' describes:
+It is difficult to find a good definition for file storage, the following one is more general and not too technical. Hence The Free Dictionary defines file storage as follows:
 \begin{quote}
-A generic term for warehousing electronic files. It may refer to local storage in a PC or tablet or remote storage on the Internet. The primary storage devices are hard drives and solid state drives.
+A generic term for warehousing electronic files. It may refer to local storage in a PC or tablet or remote storage on the Internet. The primary storage devices are hard drives and solid state drives\cite{thefreedictionary}.
 \end{quote}
+To begin with an overview of the different approaches for file storage and some historical aspects there are basically three different file storage generations. Afterwards it is often talked about distributed file storage (DFS) meaning that file storage is not managed by only one system that is geographically constraint. When talking about cloud a metaphorical synonym for DFS is intended.
 
-Traditional or \textit{Client-Server file storage}, also called \textbf{1st generation DFS} (Distributed File System) are systems where the cloud is one (or multiple) huge file server storing all the files of multiple clients being on the same network. The main problem in such systems is the file server itself as the \textit{single point of failure} and thus the server becomes the bottleneck.
-
+Firstly, talking about traditional or \textit{Client-Server file storage}, also called \textbf{1st generation DFS}, systems where the cloud consists of one or multiple huge file server storing all the files of multiple clients being on the same network are opined. The main problem in such systems is the file server itself acting as a \textit{single point of failure} and thus becomes a \textit{bottleneck}, illustrated in figure \ref{1st_gen_dfs}.
 	\begin{figure}[H]
 		\begin{center}
-		\includegraphics[scale=0.3]{Talk5/1st_gen_dfs.PNG}
+		\includegraphics[scale=0.25]{Talk5/1st_gen_dfs.PNG}
 		\end{center}
 		\caption{1st Generation DFS \cite{wikimedia:p2p}}
 		\label{1st_gen_dfs}
 	\end{figure}
-
-\textit{Distributed file systems} known as \textbf{2nd generation DFS} have some similarities to the traditional system except that files are stored to a cluster of servers, so each server stores parts of the original files. These systems are symmetric and scalable and this makes it trusted and stable.
-
+\textit{Distributed file systems} known as \textbf{2nd generation DFS}, not to confuse with distributed file storage, show some similarities to the traditional system except files being stored to a cluster of servers, so each server stores parts of the original files. In general RAID (Redundant Array of Independent Disks) is used to hopefully avoid storage medium failure and enhance data throughput. These systems are symmetric and scalable and making them trusted and stable. Scalable is an indicator for how easy it is to add endpoints to a system. Figure \ref{2nd_gen_dfs} shows an scheme of a distributed file system.
 	\begin{figure}[H]
 		\begin{center}
-		\includegraphics[scale=0.3]{Talk5/2nd_gen_dfs.PNG}
+		\includegraphics[scale=0.25]{Talk5/2nd_gen_dfs.PNG}
 		\end{center}
-		\caption{2nd Generation DFS \cite{wikimedia:p2p}}
+		\caption{2nd Generation DFS}
 		\label{2nd_gen_dfs}
 	\end{figure}
-	
-The \textbf{3rd generation DFS}, namely \textit{peer to peer systems} do not have such a clear structure and separation between 'clients' and 'servers', each peer, which means each device connected to the network being able to store or access data on that network, also called node, is connected to other peers. The whole system is self-organizing, autonomous and heterogeneous. Peers can give access (read/write) to other peers to specific files and as long as these peers are connected to the network, the files are accessible.
-	
+The \textbf{3rd generation DFS}, namely \textit{peer-to-peer systems} in general do not have such a clear structure and separation between clients and servers, each peer, also called node, which means each device connected to the network being able to store or access data on that network is connected to other peers, see figure \ref{3rd_gen_dfs}. The whole system is self-organizing, autonomous and heterogeneous. Heterogeneity in the sense of what systems are within such a network and what bandwidth rate is available, meaning it does not matter whether a node is a powerful server on broadband or a mobile device on it's mobile network. Peers can give access, read and or write, to other peers to specific files, and as long as the peers providing the data are connected to the network the files are accessible.
 	\begin{figure}[H]
 		\begin{center}
-		\includegraphics[scale=0.3]{Talk5/3rd_gen_dfs.PNG}
+		\includegraphics[scale=0.25]{Talk5/3rd_gen_dfs.PNG}
 		\end{center}
 		\caption{3rd Generation DFS \cite{wikimedia:p2p}}
 		\label{3rd_gen_dfs}
 	\end{figure}
 
 \subsection{Peer-to-Peer}
-In this section, a deeper understanding of the main ideas and goals of Peer-to-Peer systems will be given. Tough it is not possible to go very deep in this topic, the idea is to give an overview and a basis for the related work in following sections. First of all a very detailed definition of what Peer-to-Peer systems can be described as:
+In this section a deeper understanding of the main ideas and goals of Peer-to-Peer systems will be given. Tough it is not possible to go very deep in this topic, the idea is to give an overview and a basis for the related work in following sections. First of all a very detailed definition of what Peer-to-Peer systems can be described as is given:
 \begin{quote}
 A distributed network architecture may be called a Peer-to-Peer (P-to-P, P2P,...) network, if the participants share a part of their own hardware resources (processing power, storage capacity, network link capacity, printers,...). These shared resources are necessary to provide the Service and content offered by the network (e.g. file sharing or shared workspaces for collaboration). They are accessible by other peers directly, without passing intermediary entities. The participants of such a network are thus resource (Service and content) providers as well as resource (Service and content) requestors (Servent-concept)\cite{ptp:definition}.
 \end{quote}
+Apparently the concept behind P2P systems is to move away from the traditional client-server architecture to get as far away from their withdrawals as possible. Instead of having one machine acting as a server only answering requests by clients when these clients send those requests, in P2P, the roles of the client and server are combined into one machine (hereforth called peer). Peers then can form a network of peers, i.e., a peer-to-peer network.
 
-Apparently the concept behind P2P systems is to move away from the traditional client-server architecture to get as far away from their withdrawals as possible. Instead of having one machine acting as a server only answering requests by clients when these clients send those requests. In P2P, the roles of the client and server are combined into one machine (hereforth called peer). Peers then can form a network of peers, i.e., a peer-to-peer network.)
-
-Advantages and disadvantages (no single point of failure, peering may be complicated, may be difficult to prevent freeloading, security)
+There are some well-known advantages and disadvantages in peer-to-peer systems. As for traditional distributed file storage the server can become the single point of failure and RAID networks are expensive and sophisticated to maintain whereas peer-to-peer networks do not have to deal with all of these problems. P2P systems naturally are scalable and excellent in fault tolerance what needs to be archived heavy-going for centralized systems. Nonetheless peer-to-peer systems are quite difficult to manage and good security is hard to archive but having these concerns controlled by a single instance like it is for centralized systems, it is easy to obtain.
 
 Maybe some pictures
 
