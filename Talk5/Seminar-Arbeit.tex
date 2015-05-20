@@ -28,12 +28,11 @@ This seminar report provides an overview over the current available P2P file sto
 This section gives a short basic overview over the most important topics concerning P2P systems, file storage, and the special requirements of P2P file storage systems compared to those of traditional and distributed file storage. Also, the most common drawbacks of these older systems compared to P2P systems will be shown.
 
 \subsection{File Storage}
-%% TODO: SOURCE NEEDED
 The Free Dictionary defines file storage as follows:
 \begin{quote}
 A generic term for warehousing electronic files. It may refer to local storage in a PC or tablet or remote storage on the Internet. The primary storage devices are hard drives and solid state drives. \cite{thefreedictionary}
 \end{quote}
-First of all, an overview of the different approaches to file storage and some historical aspects will be given. There are basically three different file storage generations classified. From here on, it will be spoken about distributed file storage (DFS), which means that file storage is not managed by only one system that is geographically constraint. The term \textit{cloud} is a metaphorical synonym for DFS is alluded.
+First of all, an overview of the different approaches to file storage and some historical aspects will be given. There are basically three different file storage generations classified. From here on, it will be spoken about distributed file storage (DFS), which means that file storage is not managed by only one system that is geographically constraint. The term \textit{cloud} is used as a metaphorical synonym for DFS. The following content refers to Prof. Chun-Hsin Wu of the Department of Computer Science and Information Engineering at National University of Kaohsiung introduction to Storage Systems \ref{p2p:introduction_sotrage_systems}.
 
 Firstly, \textit{Client-Server file storage} will be described, also called \textbf{1st generation DFS}, systems where the cloud consists of one or multiple huge file server storing all the files of multiple clients being on the same network are addressed. The main problem in such systems is that the file server itself acts as a \textit{single point of failure} and, thus, becomes a \textit{bottleneck}, as illustrated in Figure \ref{1st_gen_dfs}.
 
@@ -64,18 +63,19 @@ The \textbf{3rd generation DFS}, namely \textit{P2P systems}, in general do not 
 \end{figure}
 \footnotetext[1]{Peer-to-peer; http://en.wikipedia.org/wiki/Peer\_to\_peer, online accessed at April, 2015.}
 
-As each approach of distributed file storage has its benefits, there is no system without drawbacks or even constraints. This is one of the main reasons why first and second generation DFS are still omnipresent, but P2P technology is on the increase as technology progresses and acceptance and mistrust of society disappears. %% REFERENCE
+As each approach of distributed file storage has its benefits, there is currently no system without drawbacks or even constraints. In the following chapter, Chapter \ref{subsec:peer-to-peer} different peering solutions and their known assets and drawbacks are discussed.
 
 \subsection{Peer-to-Peer}
+\label{subsec:peer-to-peer}
 In this section, a more detailed description of the main ideas and goals of P2P systems will be given. Though it is not possible to go very deep in this topic, the idea is to give an overview and a basis for the related work in following sections. First, a detailed definition of P2P systems is given. Second, it is explained what type of peering schemes exist and in the end a summary of the well known assets and drawbacks of P2P systems compared to traditional cloud storage is carried out.
 \begin{quote}
 A distributed network architecture may be called a Peer-to-Peer (P-to-P, P2P,...) network, if the participants share a part of their own hardware resources (processing power, storage capacity, network link capacity, printers,...). These shared resources are necessary to provide the Service and content offered by the network (e.g. file sharing or shared workspaces for collaboration). They are accessible by other peers directly, without passing intermediary entities. The participants of such a network are thus resource (Service and content) providers as well as resource (Service and content) requestors (Servent-concept). \cite{p2p:definition}
 \end{quote}
 The goal behind P2P systems is to move away from the traditional client-server architecture to get as far away from their drawbacks as possible. Instead of having one machine acting as a server, only answering requests by clients when these clients send those requests, in P2P, the roles of the client and server are combined into one machine. Peers then can form a network of peers, i.e., a P2P network.
 
-There are some well-known advantages and disadvantages in P2P systems. As for traditional distributed file storage, the server can become the single point of failure and RAID networks are expensive and sophisticated to maintain whereas P2P networks do not have to deal with all of these problems. P2P systems are scalable and sophisticated in fault tolerance what is hard to be achieved for centralized systems. However, P2P systems are quite difficult to manage and good security is hard to achieve but having these concerns controlled by a single instance like it is for centralized systems, it is easy to obtain \cite{tomp2p:p2p_introduction}. %% Check reference
+There are some well-known advantages and disadvantages in P2P systems. As for traditional distributed file storage, the server can become the single point of failure and RAID networks are expensive and sophisticated to maintain whereas P2P networks do not have to deal with all of these problems. P2P systems are scalable and sophisticated in fault tolerance what is hard to be achieved for centralized systems. However, P2P systems are quite difficult to manage and good security is hard to achieve but having these concerns controlled by a single instance like it is for centralized systems, it is easy to obtain \cite{openp2p:p2p_introduction}.
 
-Generally, P2P networks classify four different types. Mostly it is not possible to clearly associate a known system to only one of these four basic approaches because most systems on the market do not provide such a clear structure or use multiple approaches. Nonetheless, usually one approach sticks out \cite{p2p-introduction:tomp2p}. %% Check reference
+Generally, P2P networks classify four different types. Mostly it is not possible to clearly associate a known system to only one of these four basic approaches because most systems on the market do not provide such a clear structure or use multiple approaches. Nonetheless, usually one approach sticks out \cite{openp2p:p2p_introduction}.
 \begin{enumerate}
 	\item \textbf{Centralized P2P} as indicated in Figure \ref{centralized_p2p} shows similarities to the classical client-server model where peers in fact communicate directly with each other but with the help of a central server. A good known service as an example for centralized P2P is Napster which uses central peer serves as directories. AeroFS, discussed in Chapter \ref{subsec:Aerofs} uses a similar approach too.
 
@@ -113,12 +113,12 @@ Generally, P2P networks classify four different types. Mostly it is not possible
 	\end{minipage}%
 \end{figure}
 
-P2P networks often lack having enough peers who are continuously connected to the network. In this case, peers are defined as volunteers who help important files achieving fast transfer speeds. %% Reference Needed
+P2P networks often lack having enough peers who are continuously connected to the network. In this case, peers are defined as volunteers who help important files achieving fast transfer speeds \ref{storj:PDF}.
 
 \subsection{Problems of Synchronization and Sharing Services}
 File synchronization has to address and deal with several problems. Depending on the type of file storage and synchronization that is used, some problems are easy to address and some are very hard to fully cover. In traditional file storage, for example, the main problem is the server itself which becomes a bottleneck and is vulnerable to targeted attacks, e.g., DDOS (distributed denial of service) attacks. Private data on these large, external data centers is often not encrypted or, if it is, the keys are stored on the same server, as will be shown in Chapter \ref{subsec:dropbox}. Users do not have control over who can access their private data and he or she is bound to the respective pricing and terms of the service. Such systems often lack of version control and conflict management \cite{hive2hive}.
 
-Also manageability and trust are topics P2P solutions have to address. Depending on the peering scheme used, e.g., manageability gets more complicated as it is for pure P2P and availability is downscaled in centralized P2P where the server again becomes a bottleneck. Concerning trust, it has been proven to successfully undermine powerful and well secured servers and it is just a logic implication that for peers, which represent normal household computational devices, manipulation must be much simpler. %% Reference needed
+Also manageability and trust are topics P2P solutions have to address. Depending on the peering scheme used, e.g., manageability gets more complicated as it is for pure P2P and availability is downscaled in centralized P2P where the server again becomes a bottleneck. Concerning trust, it has been proven to successfully undermine powerful and well secured servers and it is just a logic implication that for peers, which represent normal household computational devices, manipulation must be much simpler \ref{openp2p:p2p_introduction}.
 
 \section{Approach}
 \label{sec:approach}
@@ -364,7 +364,7 @@ Fairness in the sense of peer to peer is not applicable or not relevant since a 
 \textbf{Status:} Available for use and costs-free (depending on type of use).
 
 
-\section{Summary and Conclusions}
+\section{Conclusions}
 %% Some text that referrs to the table
 \begin{sidewaystable}
 	\centering
@@ -393,9 +393,11 @@ As a conclusion of the facts described above P2P systems as well as client-serve
 
 	\bibitem {p2p:definition}
 		R. Schollmeier:
-		\emph{A Definition of Peer-to-Peer Networking for the Classification of Peer-to- Peer Architectures and Applications;}
-		\url{http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=990434&tag=1},
-		online accessed at April, 2015.
+		\emph{A definition of peer-to-peer networking for the classification of peer-to-peer architectures and applications;}
+		Peer-to-Peer Computing, 2001. Proceedings. First International Conference,
+		August 2001,
+		pp.101,102,
+		\url{http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=990434&isnumber=21356}.
 
 	\bibitem {aerofs}
 		\emph{AeroFS}
@@ -547,6 +549,12 @@ As a conclusion of the facts described above P2P systems as well as client-serve
 		\url{https://www.getsync.com/},
 		online accessed at March, 2015.
 
+	\bibitem {p2p:introduction_sotrage_systems}
+		Prof. Chun-Hsin Wu:
+		\emph{P2P Storage Systems;}
+		\url{http://www.csie.nuk.edu.tw/~wuch/course/csf641/csf641-04-storage.pdf},
+		online accessed at Mai, 2015.
+		
 	\bibitem {p2p-introduction:tomp2p}
 		\emph{TomP2P: A P2P-based high performance key-value pair storage library;}
 		\url{http://tomp2p.net/doc/p2p/},
@@ -562,10 +570,10 @@ As a conclusion of the facts described above P2P systems as well as client-serve
 		\url{https://github.com/tomp2p/TomP2P},
 		online accessed at April, 2015.
 
-	\bibitem {tomp2p:p2p_introduction}
-		\emph{TomP2P, a P2P-based key-value pair storage library}
-		\url{http://tomp2p.net/doc/p2p/},
-		online accessed at April, 2015.
+	\bibitem {openp2p:p2p_introduction}
+		\emph{Distributed Systems Topologies: Part 2 - O'Reilly Media;}
+		\url{hhttp://www.openp2p.com/pub/a/p2p/2002/01/08/p2p_topologies_pt2.html},
+		online accessed at Mai, 2015.
 
 	\bibitem {aerofs:USTO.RE}
 		Dur\~ao et al:
