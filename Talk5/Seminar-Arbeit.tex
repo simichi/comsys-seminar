@@ -21,11 +21,11 @@ Today, file synchronization and storage are demanded more than ever. The average
 
 In general, existing file synchronization and storage systems can be categorized into two groups: Client-Server-based distributed file storage systems (also sometimes referred to as Cloud storage systems) and Peer-to-Peer file storage systems. Since giving a comprehensive treatment to both of those categories would be beyond the scope of this seminar thesis, the focus here lies on Peer-to-Peer file storage systems, henceforth called P2P file storage systems.
 
-This seminar thesis aims to give an overview over the current available P2P file storage systems and categorize them according to their different aspects. In chapter \ref{sec:background} we want to give an impression of the background of peer-to-peer systems including historical aspects, manly predecessor approaches of file storage solutions. Chapter \ref{sec:approach} shows the procedures and approaches used in this thesis to explain the decisions made for the choice of systems to compare and also for the criteria according to which the systems were compared with each other. The following four peer-to-peer systems have been chosen and will be described in Chapter \ref{comparisons} according to the chosen criteria: Storj, AeroFS, Hive2Hive and BitTorrentSync. Furthermore the findings will be summarized on the basis of comparing the assets and drawbacks of these systems, and a comparison to Dropbox, a popular distributed file storage system, will be made.
+This seminar thesis aims to give an overview over the current available P2P file storage systems and categorize them according to their different aspects. In Chapter \ref{sec:background} we want to give an impression of the background of P2P systems including historical aspects, manly predecessor approaches of file storage solutions. Chapter \ref{sec:approach} shows the procedures and approaches used in this thesis to explain the decisions made for the choice of systems to compare and also for the criteria according to which the systems were compared with each other. The following four P2P systems have been chosen and will be described in Chapter \ref{comparisons} according to the chosen criteria: Storj, AeroFS, Hive2Hive and BitTorrentSync. Furthermore the findings will be summarized on the basis of comparing the assets and drawbacks of these systems, and a comparison to Dropbox, a popular distributed file storage system, will be made.
 
 \section{Background}
 \label{sec:background}
-This section gives a short basic overview over the most important topics concerning P2P systems, file storage, and the special requirements of P2P file storage systems compared to those of traditional and distributed file storage. Also, the most common drawbacks of these older systems compared to peer-to-peer systems will be shown.
+This section gives a short basic overview over the most important topics concerning P2P systems, file storage, and the special requirements of P2P file storage systems compared to those of traditional and distributed file storage. Also, the most common drawbacks of these older systems compared to P2P systems will be shown.
 
 \subsection{File Storage}
 The Free Dictionary defines file storage as follows:
@@ -35,89 +35,95 @@ A generic term for warehousing electronic files. It may refer to local storage i
 To begin with, an overview of the different approaches to file storage and some historical aspects will be given. There are basically three different file storage generations classified. From here on, it will be spoken about distributed file storage (DFS), which means that file storage is not managed by only one system that is geographically constricted. When talking about cloud, a metaphorical synonym for DFS is needed.
 
 Firstly, \textit{Client-Server file storage} will be described, also called \textbf{1st generation DFS}, systems where the cloud consists of one or multiple huge file server storing all the files of multiple clients being on the same network are opined. The main problem in such systems is that the file server itself acts as a \textit{single point of failure} and, thus, becomes a \textit{bottleneck}, as illustrated in Figure \ref{1st_gen_dfs}.
-	\begin{figure}[H]
-		\begin{center}
-		\includegraphics[scale=0.25]{Talk5/1st_gen_dfs.PNG}
-		\end{center}
-		\caption{1st Generation DFS \cite{wikimedia:p2p}}
-		\label{1st_gen_dfs}
-	\end{figure}
+
 \textit{Distributed file systems}, known as \textbf{2nd generation DFS}, not to be confused with distributed file storage, show some similarities to the traditional system except files being stored on a cluster of servers, so each server stores parts of the original files. In general, RAID (Redundant Array of Independent Disks) is used to hopefully avoid storage medium failure and enhance data throughput. These systems are known to be symmetric and scalable. Scalable is an indicator for how easy it is to add endpoints to a system. Figure \ref{2nd_gen_dfs} shows a scheme of a distributed file system.
-	\begin{figure}[H]
-		\begin{center}
-		\includegraphics[scale=0.25]{Talk5/2nd_gen_dfs.PNG}
-		\end{center}
-		\caption{2nd Generation DFS}
+
+The \textbf{3rd generation DFS}, namely \textit{P2P systems}, in general do not have such a clear structure and separation between clients and servers. Each peer, also called node, which means each device connected to the network that is able to store or access data on that network is connected to other peers, see figure \ref{3rd_gen_dfs}. The whole system is self-organizing, autonomous and heterogeneous. Heterogeneity in the sense of what systems are within such a network and what bandwidth rate is available, meaning it does not matter whether a node is a powerful server on broadband or a mobile device on it's mobile network. Autonomy and self-organization is the basic principle and indicator for P2P systems and describes the process how other peers can be discovered and how the network itself sets up. Peers can give access, read and or write to other peers to specific files and folders, and as long as the peers providing the data are connected to the network, the files are accessible.
+	
+\begin{figure}
+	\centering
+	\begin{minipage}{.33\textwidth}
+		\centering
+		\includegraphics[scale=0.175]{Talk5/1st_gen_dfs.PNG}
+		\captionof{figure}{1st gen. DFS \cite{wikimedia:p2p}}
+		\label{1st_gen_dfs}
+	\end{minipage}%
+	\begin{minipage}{.33\textwidth}
+		\centering
+		\includegraphics[scale=0.175]{Talk5/2nd_gen_dfs.PNG}
+		\captionof{figure}{2nd gen. DFS}
 		\label{2nd_gen_dfs}
-	\end{figure}
-The \textbf{3rd generation DFS}, namely \textit{peer-to-peer systems}, in general do not have such a clear structure and separation between clients and servers. Each peer, also called node, which means each device connected to the network that is able to store or access data on that network is connected to other peers, see figure \ref{3rd_gen_dfs}. The whole system is self-organizing, autonomous and heterogeneous. Heterogeneity in the sense of what systems are within such a network and what bandwidth rate is available, meaning it does not matter whether a node is a powerful server on broadband or a mobile device on it's mobile network. Autonomy and self-organization is the basic principle and indicator for P2P systems and describes the process how other peers can be discovered and how the network itself sets up. Peers can give access, read and or write to other peers to specific files and folders, and as long as the peers providing the data are connected to the network, the files are accessible.
-	\begin{figure}[H]
-		\begin{center}
-		\includegraphics[scale=0.25]{Talk5/3rd_gen_dfs.PNG}
-		\end{center}
-		\caption{3rd Generation DFS \cite{wikimedia:p2p}}
+	\end{minipage}
+	\begin{minipage}{.33\textwidth}
+		\centering
+		\includegraphics[scale=0.175]{Talk5/3rd_gen_dfs.PNG}
+		\captionof{figure}{3rd gen. DFS \cite{wikimedia:p2p}}
 		\label{3rd_gen_dfs}
-	\end{figure}
-As each approach of distributed file storage may have his benefits, there is no system without drawbacks or even constraints. This is one of the main reasons why first and second generation DFS are still omnipresent, but peer-to-peer technology is on the increase as technology progresses and acceptance and mistrust of society disappears.
+	\end{minipage}
+\end{figure}
+
+As each approach of distributed file storage may have his benefits, there is no system without drawbacks or even constraints. This is one of the main reasons why first and second generation DFS are still omnipresent, but P2P technology is on the increase as technology progresses and acceptance and mistrust of society disappears.
 
 \subsection{Peer-to-Peer}
-In this section, a deeper understanding of the main ideas and goals of Peer-to-Peer systems will be given. Though it is not possible to go very deep in this topic, the idea is to give an overview and a basis for the related work in following sections. First of all, a very detailed definition of what Peer-to-Peer systems can be described as is given. Later, it is explained what type of peering scheme exist and in the end a summary of the well known assets and drawbacks of peer-to-peer systems compared to traditional cloud storage is carried out.
+In this section, a deeper understanding of the main ideas and goals of P2P systems will be given. Though it is not possible to go very deep in this topic, the idea is to give an overview and a basis for the related work in following sections. First of all, a very detailed definition of what P2P systems can be described as is given. Later, it is explained what type of peering scheme exist and in the end a summary of the well known assets and drawbacks of P2P systems compared to traditional cloud storage is carried out.
 \begin{quote}
-A distributed network architecture may be called a Peer-to-Peer (P-to-P, P2P,...) network, if the participants share a part of their own hardware resources (processing power, storage capacity, network link capacity, printers,...). These shared resources are necessary to provide the Service and content offered by the network (e.g. file sharing or shared workspaces for collaboration). They are accessible by other peers directly, without passing intermediary entities. The participants of such a network are thus resource (Service and content) providers as well as resource (Service and content) requestors (Servent-concept)\cite{ptp:definition}.
+A distributed network architecture may be called a Peer-to-Peer (P-to-P, P2P,...) network, if the participants share a part of their own hardware resources (processing power, storage capacity, network link capacity, printers,...). These shared resources are necessary to provide the Service and content offered by the network (e.g. file sharing or shared workspaces for collaboration). They are accessible by other peers directly, without passing intermediary entities. The participants of such a network are thus resource (Service and content) providers as well as resource (Service and content) requestors (Servent-concept)\cite{p2p:definition}.
 \end{quote}
-The goal behind P2P systems is to move away from the traditional client-server architecture to get as far away from their drawbacks as possible. Instead of having one machine acting as a server, only answering requests by clients when these clients send those requests, in P2P, the roles of the client and server are combined into one machine (hereforth called peer). Peers then can form a network of peers, i.e., a peer-to-peer network.
+The goal behind P2P systems is to move away from the traditional client-server architecture to get as far away from their drawbacks as possible. Instead of having one machine acting as a server, only answering requests by clients when these clients send those requests, in P2P, the roles of the client and server are combined into one machine (hereforth called peer). Peers then can form a network of peers, i.e., a P2P network.
 
-There are some well-known advantages and disadvantages in peer-to-peer systems. As for traditional distributed file storage, the server can become the single point of failure and RAID networks are expensive and sophisticated to maintain whereas peer-to-peer networks do not have to deal with all of these problems. P2P systems naturally are scalable and excellent in fault tolerance what needs to be archived heavy-going for centralized systems. However, peer-to-peer systems are quite difficult to manage and good security is hard to achieve but having these concerns controlled by a single instance like it is for centralized systems, it is easy to obtain \cite{tomp2p:p2p_introduction}.
+There are some well-known advantages and disadvantages in P2P systems. As for traditional distributed file storage, the server can become the single point of failure and RAID networks are expensive and sophisticated to maintain whereas P2P networks do not have to deal with all of these problems. P2P systems naturally are scalable and excellent in fault tolerance what needs to be archived heavy-going for centralized systems. However, P2P systems are quite difficult to manage and good security is hard to achieve but having these concerns controlled by a single instance like it is for centralized systems, it is easy to obtain \cite{tomp2p:p2p_introduction}.
 
-Generally, four different types of P2P networks are classified. Mostly it is not possible to clearly associate a known system to only one of these four basic approaches because most systems on the market do not provide such a clear structure or use multiple approaches. Nonetheless, usually one approach sticks out \cite{ptp-introduction:tomptp}.
+Generally, four different types of P2P networks are classified. Mostly it is not possible to clearly associate a known system to only one of these four basic approaches because most systems on the market do not provide such a clear structure or use multiple approaches. Nonetheless, usually one approach sticks out \cite{p2p-introduction:tomp2p}.
 \begin{enumerate}
 	\item \textbf{Centralized P2P} as indicated in figure \ref{centralized_p2p} shows similarities to the classical client-server model where peers in fact communicate directly with each other but with the help of a central server. A good known service as an example for centralized P2P is Napster which uses central peer serves as directories. AeroFS, one of the systems later in detail discussed uses a similar approach too.
-	\begin{figure}[H]
-		\begin{center}
-		\includegraphics[scale=0.2]{Talk5/centralized_p2p.PNG}
-		\end{center}
-		\caption{Centralized peer-to-peer}
-		\label{centralized_p2p}
-	\end{figure}
-	\item \textbf{Hybrid P2P} provides so called \textit{super peers} to find other peers and resources. Peers communicate to these super peers until the resource is found and thus the peers can communicate directly. This paper does not cover any detailed discussion of a hybrid system but a well known service is for example Sykpe. Figure \ref{hybrid_p2p} illustrates a hybrid approach:
-	\begin{figure}[H]
-		\begin{center}
-		\includegraphics[scale=0.2]{Talk5/hybrid_p2p.PNG}
-		\end{center}
-		\caption{Hybrid peer-to-peer}
-		\label{hybrid_p2p}
-	\end{figure}
-	\item \textbf{Pure P2P} systems, also known as \textit{unstructured P2P} systems, are systems in which all peers do equally powerful communicate without any server or super peer, so peers communicate directly and act as relays to find demanded resources. BitTorrentSync and Storj, both systems that will be discussed in detail in a moment are systems which use a pure P2P approach as shown in figure \ref{pure_p2p}:
-	\begin{figure}[H]
-		\begin{center}
-		\includegraphics[scale=0.2]{Talk5/pure_p2p.PNG}
-		\end{center}
-		\caption{Pure (unstructured) peer-to-peer}
-		\label{pure_p2p}
-	\end{figure}
+
+	\item \textbf{Hybrid P2P} provides so called \textit{super peers} to find other peers and resources. Peers communicate to these super peers until the resource is found and thus the peers can communicate directly. This paper does not cover any detailed discussion of a hybrid system but a well known service is for example Sykpe. Figure \ref{hybrid_p2p} illustrates a hybrid approach.
+	
+	\item \textbf{Pure P2P} systems, also known as \textit{unstructured P2P} systems, are systems in which all peers do equally powerful communicate without any server or super peer, so peers communicate directly and act as relays to find demanded resources. BitTorrentSync and Storj, both systems that will be discussed in detail in a moment are systems which use a pure P2P approach as shown in figure \ref{pure_p2p}.
+	
 	\item \textbf{Structured P2P} as shown in figure \ref{structured_p2p} are similar to pure P2P, however the peers are organized in a specific structure, e.g. a tree, often a DHT which is used to enhance peer and resource detection. A DHT is just like a normal hash table where hashes of the keys are stored and these keys indicate on which peer the requested files are. Each peer is responsible for a specific key range and henceforth is called \textit{distributed hash table}.
-	\begin{figure}[H]
-		\begin{center}
-		\includegraphics[scale=0.2]{Talk5/structured_p2p.PNG}
-		\end{center}
-		\caption{Structured peer-to-peer}
-		\label{structured_p2p}
-	\end{figure}
 \end{enumerate}
 
-Peer-to-peer networks often lack having enough peers who are continuously connected to the network. In this case, peers are defined as volunteers who help important files achieving fast transfer speeds.
+\begin{figure}
+	\begin{minipage}{.5\linewidth}
+		\centering
+		\includegraphics[scale=0.2]{Talk5/centralized_p2p.PNG}
+		\caption{Centralized P2P}
+		\label{centralized_p2p}
+	\end{minipage}%
+	\begin{minipage}{.5\linewidth}
+		\centering
+		\includegraphics[scale=0.2]{Talk5/hybrid_p2p.PNG}
+		\caption{Hybrid P2P}
+		\label{hybrid_p2p}
+	\end{minipage}\par\medskip
+	\begin{minipage}{.5\linewidth}
+		\centering
+		\includegraphics[scale=0.2]{Talk5/pure_p2p.PNG}
+		\caption{Pure (unstructured) P2P}
+		\label{pure_p2p}
+	\end{minipage}%
+	\begin{minipage}{.5\linewidth}
+		\centering
+		\includegraphics[scale=0.2]{Talk5/structured_p2p.PNG}
+		\caption{Structured P2P}
+		\label{structured_p2p}
+	\end{minipage}%
+\end{figure}
+
+P2P networks often lack having enough peers who are continuously connected to the network. In this case, peers are defined as volunteers who help important files achieving fast transfer speeds.
 
 \subsection{Problems of Common Synchronization and Sharing Services}
 File synchronization has to address and deal with several problems. Depending on the type of file storage and synchronization that is used, some problems are easy to address and some are even impossible to fully cover. In traditional file storage, for example, the main problem is the server itself which becomes a bottleneck and is vulnerable to targeted attacks e.g. DDOS (distributed denial of service) attacks. Private data on these large, external data centers is often not encrypted or, if it is, the keys are stored on the same server, as will be shown later in the example of Dropbox. Users do not have control over who can access their private data and he or she is bound to the respective pricing and terms of the service. Such systems often lack of version control and conflict management \cite{hive2hive}.
 
 Depending on the peering scheme used, e.g., manageability gets more complicated as it is for pure P2P and availability is downscaled in centralized P2P where the server again becomes a bottleneck. But for all peering schemes trust is a big talking point. As it has proven to successfully undermine powerful and well secured servers it is just a logic implication that for peers, which represent normal household computational devices, manipulation must be much simpler.
 
-\section{Approach} % @Simon
+\section{Approach}
 \label{sec:approach}
 In this section, our reasons and a justification for the chosen systems is provided. Additionally, the criteria we chose to classify the different file storage systems are listed and stated below.
 
 \subsection{Justification of the chosen systems}
-During research, so many peer-to-peer systems where discovered that making a selection of a few was inevitable. The criteria that were chosen for evaluation where:
+During research, so many P2P systems where discovered that making a selection of a few was inevitable. The criteria that were chosen for evaluation where:
 \begin{enumerate}
 \item \textbf{Availability and maturity} -- \textit{Is the system currently available and are the concepts developed and implemented and not only ideas?}\\
 We required there to be good documentation or papers of the systems to be able to cover as many criteria as possible.
@@ -134,7 +140,7 @@ The decision of criteria was made to fit what we feel are the most important asp
 
 \begin{enumerate}[(a)]
 \item \textbf{Peering Scheme} -- \textit{How are peers connected, where is user data stored, how do users communicate and what messages do they exchange?}\\
-This classification criteria describes the technical aspects of the peer-to-peer system. As described in Section \ref{sec:background} there are many different forms of peering schemes for peer-to-peer networks. It also may be important for users to know how and where their data is physically stored in the network. Some users may be scared of storing their personal data on the machine of a stranger, even if the data is divided into chunks and encrypted. This aspect also deals with how peers can share data with each other and which communication possibilities exist. 
+This classification criteria describes the technical aspects of the P2P system. As described in Section \ref{sec:background} there are many different forms of peering schemes for P2P networks. It also may be important for users to know how and where their data is physically stored in the network. Some users may be scared of storing their personal data on the machine of a stranger, even if the data is divided into chunks and encrypted. This aspect also deals with how peers can share data with each other and which communication possibilities exist. 
 
 \item \textbf{Encryption} -- \textit{Is the communication between peers and the files stored encrypted and with which algorithm?}\\
 Users tend to give great importance to the fact that their personal data can only be read by authorized peers. Therefore, a strong encryption mechanism is almost mandatory. This criteria analyzes if and how the users' files and their communication with other peers is encrypted.
@@ -170,9 +176,9 @@ A system should be available for use or at least available in near future. Also 
 In this section, we classify and compare four exemplary P2P file storage systems according to the classification criteria given in the preceding section. We also compare the P2P file storage to a popular distributed file storage system to find similarities and differences. At the end, highlight the findings in a table comparing the file storage systems with each other.
 
 \subsection{Storj}
-One can describe Storj (pronounced storage) as a completely decentralized and blockchain-based peer-to-peer cloud storage system with it's major concern for security and efficiency. Being primary launched in July 2014, it further includes a peer-to-peer payment system service similar to Bitcoin \cite{storj:blog:what_is_storj}. Storj mainly consists of two applications, namely DriveShare (also called Driveminer) and Metadisk. The former uses unused hard drive space of users and the latter is a web-service used for file storage and sharing. The main approach of Storj claims that the average user has a lot of unused hard drive space and for many systems a user pays for a specific amount of space even if he or she doesn't use it at all. Storj further claims a user is only obligated to pay for his used space and thus will be much cheaper than any other available cloud storage.
+One can describe Storj (pronounced storage) as a completely decentralized and blockchain-based P2P cloud storage system with it's major concern for security and efficiency. Being primary launched in July 2014, it further includes a P2P payment system service similar to Bitcoin \cite{storj:blog:what_is_storj}. Storj mainly consists of two applications, namely DriveShare (also called Driveminer) and Metadisk. The former uses unused hard drive space of users and the latter is a web-service used for file storage and sharing. The main approach of Storj claims that the average user has a lot of unused hard drive space and for many systems a user pays for a specific amount of space even if he or she doesn't use it at all. Storj further claims a user is only obligated to pay for his used space and thus will be much cheaper than any other available cloud storage.
 
-\textbf{Peering scheme:} There are no centralized servers but information of where other shards of a specific file are located is stored in the Storj blockchain. In the blockchain itself no files but only meta-data (file hashes) for file lookup are stored. A blockchain is very hard to manipulate as every peer gets a copy of it. Peer discovery is done by an advertisement system whose functionality is not explained in precision \cite{storj:PDF}. Storj remains an unstructured peer-to-peer system using the blockchain as reference for file discovery.
+\textbf{Peering scheme:} There are no centralized servers but information of where other shards of a specific file are located is stored in the Storj blockchain. In the blockchain itself no files but only meta-data (file hashes) for file lookup are stored. A blockchain is very hard to manipulate as every peer gets a copy of it. Peer discovery is done by an advertisement system whose functionality is not explained in precision \cite{storj:PDF}. Storj remains an unstructured P2P system using the blockchain as reference for file discovery.
 
 \textbf{Encryption:} Before encryption and distribution, files are splitted into so called shards. These shards, a multiple of 8 or 32 Bit-sized file chunks, are being added a deterministic salt, then uniquely encrypted and distributed over the network. A farmer, which means a hard drive space providing peer, does not get a whole copy of a file (all necessary shards do compose the original file) but the shards are distributed to multiple farmers. Per default there are at least three redundant copies of a shard available all the time. For enhanced security and for sensitive or important data it is also possible to combine shards, e.g. with garbage data or other client's data. The proof of redundancy claims if a node goes offline a copy of all it's shards is made and the shards moved to another node. In addition a user can chose how and with what his files will be encrypted  \cite{storj:PDF}.
 
@@ -213,7 +219,7 @@ To use a basic analogy, it is easy to steal a cookie from a cookie jar in a secl
 \textbf{Status:} Storj is currently in beta phase and already available for use. There are three different test groups; A, B and C each with different conditions in terms of a rewarding system, requirements and the starting date. The official launch and avery change in beta phase is planned when a specific amount of SJCX in total has been achieved \cite {storj:earlyaccess}.
 
 \subsection{Hive2Hive}
-Hive2Hive \cite{hive2hive}, formerly known as Box2Box, is an open source peer-to-peer file sharing and synchronization library that started out as part of a course challenge task project and was further improved in a graduate student's project at the Communication Systems Group at the University of Zurich \cite{hive2hive:about}. It is built on top of the TomP2P library (an open source Distributed Hash Table (DHT) based key-value store) which was also developed at the Communication Systems Group \cite{tomp2p}.
+Hive2Hive \cite{hive2hive}, formerly known as Box2Box, is an open source P2P file sharing and synchronization library that started out as part of a course challenge task project and was further improved in a graduate student's project at the Communication Systems Group at the University of Zurich \cite{hive2hive:about}. It is built on top of the TomP2P library (an open source Distributed Hash Table (DHT) based key-value store) which was also developed at the Communication Systems Group \cite{tomp2p}.
 
 \textbf{Peering Scheme}
 A structured P2P peering scheme based on the TomP2P DHT is used. Each peer is assigned an ID which signifies for which key space the peer is responsible for storage. For each piece of data that is to be stored in the DHT, an ID is generated that shows at which the file is stored. Those IDs are generated with a hash function that hashes a certain piece of information that is only known by authorized peers. That means that only peers who have the correct permission have that piece of information and therefore can access that data.
@@ -248,7 +254,7 @@ Since Hive2Hive is distributed as a library and the developers don't provide an 
 Mature library with active development.
 
 \subsection{BitTorrent Sync}
-Sync is a peer-to-peer file synchronization system developed by BitTorrent, the company that also developed the famous BitTorrent peer-to-peer protocol for file sharing. Development for Sync started in 2013 and Sync officially left beta in March 2015.
+Sync is a P2P file synchronization system developed by BitTorrent, the company that also developed the famous BitTorrent P2P protocol for file sharing. Development for Sync started in 2013 and Sync officially left beta in March 2015.
 
 \textbf{Peering Scheme}
 In Sync, users do not enter a large static network per se. Rather, connections between peers are established as soon as they start sharing folders with each other. To share a folder, the user can generate a link to it through the software. This link has to be distributed out of band, e.g., through email to the person to share the folder with. The link has to be kept a secret between the peers, since it contains the encryption key of the folder. Also, the link contains a so-called shareID which is unique for each folder and is used to advertise who can access a given folder in the Sync system. There are four different possibilities of peer discovery, i.e., finding out the IP address of a peer: Firstly, if the IP address of the peer is known to the user, it can be entered manually. Secondly, a DHT is in place that can be queried for the shareID and returns the IP address of the authorized peers. Thirdly, there are tracker servers that store a shareID / authorized peers IP address mapping table. Lastly, peers can advertise their shared folders in the LAN through multicast. Any user is free to decide which combination of peer discovery he or she wants to use.
@@ -281,7 +287,7 @@ The latest known number from 2014 claims a user base of 10 million users.
 As of March 2015, Sync is fully released to the public.
 
 \subsection{AeroFS}
-AeroFS is a dedicated software client from Air Computing providing basic peer to peer solutions but some advanced functionality concerning advanced security and encryption, error and data loss prevention and intends to provide the service at low costs. AeroFS is mainly targeted towards business users and companies who need a secure file backup and synchronization service \cite{aerofs}. AeroFS in addition claims to be the 'peer-to-peer version' of Dropbox.
+AeroFS is a dedicated software client from Air Computing providing basic peer to peer solutions but some advanced functionality concerning advanced security and encryption, error and data loss prevention and intends to provide the service at low costs. AeroFS is mainly targeted towards business users and companies who need a secure file backup and synchronization service \cite{aerofs}. AeroFS in addition claims to be the 'P2P version' of Dropbox.
 
 \textbf{Peering scheme:} AeroFS uses a centralized solution as peering scheme but let's the user chose how this will be managed. Air Computing provides two different cloud options and an additional addon, the Team Server:
 
@@ -324,7 +330,7 @@ If a hard drive short of storage space, the versioning systems of the AeroFS Tea
 \subsection{Dropbox}
 As a comparison to the previously described P2P systems the well-known file hosting service Dropbox that was founded in 2007 will be used as representation for classical cloud storage solutions and measured according to the same criteria. Both cloud storage and file synchronization are possible with this service with again both browser-based and a client application.
 
-\textbf{Peering Scheme:} Dropbox does not use any peer-to-peer technology but rather a client-server system. The data is stored in the Amazon S3 cloud. An accounting system is provided and users can give other users access to their data with either read-only or read and write permission. Folders and files can be shared by link or by username (registration required).
+\textbf{Peering Scheme:} Dropbox does not use any P2P technology but rather a client-server system. The data is stored in the Amazon S3 cloud. An accounting system is provided and users can give other users access to their data with either read-only or read and write permission. Folders and files can be shared by link or by username (registration required).
 
 \textbf{Encryption:} The stored data is encrypted with AES-256 and upload and download to the servers can be achieved with SSL. The main critique point is that Dropbox stores the decryption keys on the same servers where the files are stored and thus any administrator has insight into the data.
 
@@ -370,9 +376,9 @@ In this section, we provide a summary about the topics mentioned above and draw 
 		\end{tabular}
 \end{table}
 
-The results of the research show that peer-to-peer developers have found many different solutions to face the problems that come up when developing and constructing such a system. Thus to simplify implementation there is almost always a specialization of the software for a specific use. To benefit from one aspect of peering scheme it might be inevitable to afford drawbacks and constraints in another aspect. Concretely one could imagine a slider going from e.g. left, Fault tolerance to right, Availability and every developer have to decide where to place his slider between because it is not possible to have them both on 100 percent. Publisher often care about a specific application area, e.g., business use or file synchronization and thus the 'sliders' have to be set as appropriate as possible for every system. Further, a clear separation between file synchronization and file storage need to be made. P2P systems are able to do both but depending on the choice of specialization, doing both might no always be as easy.
+The results of the research show that P2P developers have found many different solutions to face the problems that come up when developing and constructing such a system. Thus to simplify implementation there is almost always a specialization of the software for a specific use. To benefit from one aspect of peering scheme it might be inevitable to afford drawbacks and constraints in another aspect. Concretely one could imagine a slider going from e.g. left, Fault tolerance to right, Availability and every developer have to decide where to place his slider between because it is not possible to have them both on 100 percent. Publisher often care about a specific application area, e.g., business use or file synchronization and thus the 'sliders' have to be set as appropriate as possible for every system. Further, a clear separation between file synchronization and file storage need to be made. P2P systems are able to do both but depending on the choice of specialization, doing both might no always be as easy.
 
-As a conclusion of the facts described above peer-to-peer systems as well as client-server models do not solve all problems and requirements of file storage and synchronization. One has to always live with some constraints or privacy issues, e.g. the huge gap between trusting a (well known) storage provider versus a (anonymous) peer. Peer-to-peer does not automatically mean that the single point of failure problem is solved, many P2P systems are not really better than traditional cloud storage systems in this term. The 3rd generation DFS certainly have to deal with some problems traditional client-server models do not, e.g., vulnerability to specialized attacks (e.g., sybil attacks).
+As a conclusion of the facts described above P2P systems as well as client-server models do not solve all problems and requirements of file storage and synchronization. One has to always live with some constraints or privacy issues, e.g. the huge gap between trusting a (well known) storage provider versus a (anonymous) peer. P2P does not automatically mean that the single point of failure problem is solved, many P2P systems are not really better than traditional cloud storage systems in this term. The 3rd generation DFS certainly have to deal with some problems traditional client-server models do not, e.g., vulnerability to specialized attacks (e.g., sybil attacks).
 
 \begin{thebibliography}{99}
 	\bibitem {aerofs}
@@ -465,7 +471,7 @@ As a conclusion of the facts described above peer-to-peer systems as well as cli
 		\url{https://github.com/Storj/},
 		March, 2015.
 		
-	\bibitem {ptp-introduction:tomptp}
+	\bibitem {p2p-introduction:tomp2p}
 		\emph{TomP2P: A P2P-based high performance key-value pair storage library;}
 		\url{http://tomp2p.net/doc/p2p/},
 		April, 2015.
@@ -537,7 +543,7 @@ As a conclusion of the facts described above peer-to-peer systems as well as cli
 		\url{http://encyclopedia2.thefreedictionary.com/file+storage},
 		April, 2015.
 		
-	\bibitem {ptp:definition}
+	\bibitem {p2p:definition}
 		R. Schollmeier:
 		\emph{A Definition of Peer-to-Peer Networking for the Classification of Peer-to- Peer Architectures and Applications;}
 		\url{http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=990434&tag=1},
