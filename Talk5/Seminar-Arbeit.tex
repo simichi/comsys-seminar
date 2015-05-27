@@ -32,7 +32,7 @@ The Free Dictionary defines file storage as follows:
 \begin{quote}
 A generic term for warehousing electronic files. It may refer to local storage in a PC or tablet or remote storage on the Internet. The primary storage devices are hard drives and solid state drives. \cite{thefreedictionary}
 \end{quote}
-First of all, an overview of the different approaches to file storage and some historical aspects will be given. Three different generations of file storage can be classified. From here on, the term distributed file storage (DFS) signifies file storage that is not managed by only one system that is constricted to one geographic location. The term \textit{cloud} is used as a metaphorical synonym for DFS. The following content refers to Wu \ref{p2p:introduction_storage_systems}.
+First of all, an overview of the different approaches to file storage and some historical aspects will be given. Three different generations of file storage can be classified. From here on, the term distributed file storage (DFS) signifies file storage that is not managed by only one system that is constricted to one geographic location. The term \textit{cloud} is used as a metaphorical synonym for DFS. The following content refers to Wu \ref{p2pfswu}.
 
 The first class of file storage is \textit{Client-Server file storage}, also called \textbf{1st generation DFS}, which is a system where the cloud consists of one or multiple huge file server storing all the files of multiple clients on the same network. The main problem of such a system is that the file server itself acts as a \textit{single point of failure}, as illustrated in Figure \ref{1st_gen_dfs}.
 
@@ -396,6 +396,49 @@ Future work:
 
 \begin{thebibliography}{99}
 
+	\bibitem {aerofs:USTO.RE}
+		Dur\~ao et al:
+		\emph{USTO.RE: A Private Cloud Storage Software System;}
+		\url{http://www.researchgate.net/profile/Vinicius_Garcia/publication/262284124_USTO.RE_a_private_cloud_storage_software_system/links/5457a3f30cf2cf51648219ed.pdf},
+		[online, accessed April, 2015].
+		
+	\bibitem {bittorrentsync-2}
+		J. Farina, M. Scanlon, M. Kechadi:
+		\emph{BitTorrent Sync: First Impressions and Digital Forensic Implications;}
+		Proceedings of the First Annual DFRWS Europe,
+		\url{http://ac.els-cdn.com/S1742287614000152/1-s2.0-S1742287614000152-main.pdf?_tid=10ddb6e2-ce69-11e4-9019-00000aacb35d&acdnat=1426791318_6677afbe19d521d323605261c1d19809},
+		Volume 11, Supplement 1, Pages S77\textendash S86, Volume 11, May, 2014.
+
+	\bibitem {p2pfskangasharju}
+		J. Kangasharju:
+		\emph{Peer-to-Peer Networks Chapter 4: Peer-to-Peer Storage;}
+		\url{http://www.cs.helsinki.fi/u/jakangas/Teaching/P2P/P2P-04-Storage.pdf},
+		[online, accessed March, 2015].
+		
+	\bibitem {box2box}
+		A. Lareida, T. Bocek, S. Golaszewski, C. L\"uthold, M. Weber:
+		\emph{Box2Box - A P2P-based File-Sharing and Synchronization Application;}
+		\url{http://www.csg.uzh.ch/csg/live/teaching/FS13/p2p/challenge/P2P2013DP_017.pdf},
+		[online, accessed April, 2014].
+
+	\bibitem {openp2p:p2p_introduction}
+		N. Minar:
+		\emph{Distributed Systems Topologies: Part 2 - O'Reilly Media;}
+		\url{http://www.openp2p.com/pub/a/p2p/2002/01/08/p2p_topologies_pt2.html},
+		August, 2002.
+
+	\bibitem {bitcoin}
+		S. Nakamoto:
+		\emph{Bitcoin: A Peer-to-Peer Electronic Cash System;}
+		\url{https://bitcoin.org/bitcoin.pdf},
+		[online, accessed at April, 2015].
+
+	\bibitem {aerofs:blog:30_users_free}
+		Y. Sagalov:
+		\emph{AeroFS is now free up to 30 users;}
+		\url{https://www.aerofs.com/blog/aerofs-is-now-free-up-to-30-users/},
+		[online, accessed April, 2015].
+
 	\bibitem {p2p:definition}
 		R. Schollmeier:
 		\emph{A definition of peer-to-peer networking for the classification of peer-to-peer architectures and applications;}
@@ -404,196 +447,148 @@ Future work:
 		pp.101,102,
 		\url{http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=990434&isnumber=21356}.
 
-	\bibitem {aerofs}
-		\emph{AeroFS}
-		\url{https://www.aerofs.com/},
-		online accessed at March, 2015.
-
-	\bibitem {aerofs:security_2}
-		\emph{AeroFS: Das bessere Dropbox? - Golem.de;}
-		\url{http://www.golem.de/news/aerofs-das-bessere-dropbox-1304-98485.html},
-		online accessed at April, 2015.
-
-	\bibitem {aerofs:blog:30_users_free}
-		Y. Sagalov:
-		\emph{AeroFS is now free up to 30 users;}
-		\url{https://www.aerofs.com/blog/aerofs-is-now-free-up-to-30-users/},
-		online accessed at April, 2015.
-		
-	\bibitem {bitcoin}
-		S. Nakamoto:
-		\emph{Bitcoin: A Peer-to-Peer Electronic Cash System;}
-		\url{https://bitcoin.org/bitcoin.pdf},
-		online accessed at April, 2015.
-
-	\bibitem {bittorrentsync-2}
-		J. Farina, M. Scanlon, M. Kechadi:
-		\emph{BitTorrent Sync: First Impressions and Digital Forensic Implications;}
-		Proceedings of the First Annual DFRWS Europe,
-		\url{http://ac.els-cdn.com/S1742287614000152/1-s2.0-S1742287614000152-main.pdf?_tid=10ddb6e2-ce69-11e4-9019-00000aacb35d&acdnat=1426791318_6677afbe19d521d323605261c1d19809},
-		Volume 11, Supplement 1, Pages S77\textendash S86, Volume 11, May, 2014.
-
-	\bibitem {box2box}
-		A. Lareida, T. Bocek, S. Golaszewski, C. L\"uthold, M. Weber:
-		\emph{Box2Box - A P2P-based File-Sharing and Synchronization Application;}
-		\url{http://www.csg.uzh.ch/csg/live/teaching/FS13/p2p/challenge/P2P2013DP_017.pdf},
-		online accessed at April, 2014.
-
-	\bibitem {dropbox:userbase}
-		\emph{Dropbox Reaches 300M Users;}
-		\url{http://thenextweb.com/insider/2014/05/29/dropbox-reaches-300m-users-adding-100m-users-just-six-months/},
-		online accessed at April, 2015.
-
-	\bibitem {aerofs:cloud_types}
-		\emph{Enterprise Solution - Deployment Options, AeroFS;}
-		\url{https://www.aerofs.com/features/deployment-options/},
-		online accessed at April, 2015.
-
-	\bibitem {thefreedictionary}
-		\emph{File Storage Definition;}
-		\url{http://encyclopedia2.thefreedictionary.com/file+storage},
-		online accessed at April, 2015.
-
-	\bibitem {aerofs:peering_scheme_2}
-		\emph{Flexible Storage for the Enterprise;}
-		\url{https://www.aerofs.com/features/flexible-storage/},
-		online accessed at April, 2015.
-
-	\bibitem {hive2hive:about}
-		\emph{Hive2Hive: About Us;}
-		\url{https://github.com/Hive2Hive/Hive2Hive/wiki/About-Us},
-		online accessed at March, 2015.
-
-	\bibitem {hive2hive:github}
-		\emph{Hive2Hive: Java library for secure, distributed, P2P-based file synchronization and sharing;}
-		\url{https://github.com/Hive2Hive},
-		online accessed at March, 2015.
-	(https://github.com/tomp2p/TomP2P) (https://github.com/PeerWasp/PeerWasp)
-
-	\bibitem {hive2hive}
-		\emph{Hive2Hive: Open-Source Library for P2P-based File Synchronization and Sharing;}
-		\url{http://hive2hive.com/},
-		online accessed at March, 2015.
-
 	\bibitem {metadisk}
 		S. Wilkinson, J. Lowry:
 		\emph{Metadisk: Blockchain-based decentralized file storage application;}
 		\url{http://metadisk.org/metadisk.pdf},
-		online accessed at April, 2014.
-		
-	\bibitem {p2pfswu}
-		C. Wu:
-		\emph{Peer-to-Peer Networks;}
-		\url{http://www.csie.nuk.edu.tw/~wuch/course/csf641/csf641-04-storage.pdf},
-		online accessed at March, 2015.
-
-	\bibitem {p2pfskangasharju}
-		J. Kangasharju:
-		\emph{Peer-to-Peer Networks Chapter 4: Peer-to-Peer Storage;}
-		\url{http://www.cs.helsinki.fi/u/jakangas/Teaching/P2P/P2P-04-Storage.pdf},
-		online accessed at March, 2015.
-
-	\bibitem {peerwasp}
-		\emph{Peerwasp, P2P File Synchronization and Sharing Solution based on Hive2Hive and TomP2P}
-		\url{http://www.peerwasp.com/},
-		online accessed at April, 2015.
-
-	\bibitem {peerwasp:github}
-		\emph{Peerwasp, P2P File Synchronization and Sharing Solution based on Hive2Hive and TomP2P}
-		\url{https://github.com/PeerWasp/PeerWasp},
-		online accessed at April, 2015.
-
-	\bibitem {aerofs:pricing}
-		\emph{Pricing, AeroFS;}
-		\url{https://www.aerofs.com/pricing/},
-		online accessed at April, 2015.
-
-	\bibitem {aerofs:security}
-		\emph{Security, AeroFS;}
-		\url{https://www.aerofs.com/security/},
-		online accessed at April, 2015.
-		
-	\bibitem {aerofs:peering_scheme}
-		\emph{Security Share and Transfer Large Files, Enterprise Solution, Aerofs;}
-		\url{https://www.aerofs.com/solutions/transfer-large-files/},
-		online accessed at April, 2015.
+		[online, accessed April, 2014].
 		
 	\bibitem {storj:PDF}
 		S. Wilkinson:
 		\emph{Storj A Peer-to-Peer Cloud Storage Network;}
 		\url{http://storj.io/storj.pdf/},
-		online accessed at April, 2014.
+		[online, accessed April, 2014].
+
+	\bibitem {p2pfswu}
+		C. Wu:
+		\emph{Peer-to-Peer Networks;}
+		\url{http://www.csie.nuk.edu.tw/~wuch/course/csf641/csf641-04-storage.pdf},
+		[online, accessed March, 2015].
+
+	\bibitem {aerofs}
+		\emph{AeroFS}
+		\url{https://www.aerofs.com/},
+		[online, accessed March, 2015].
+
+	\bibitem {aerofs:security_2}
+		\emph{AeroFS: Das bessere Dropbox? - Golem.de;}
+		\url{http://www.golem.de/news/aerofs-das-bessere-dropbox-1304-98485.html},
+		April, 2015.
+
+	\bibitem {dropbox:userbase}
+		\emph{Dropbox Reaches 300M Users;}
+		\url{http://thenextweb.com/insider/2014/05/29/dropbox-reaches-300m-users-adding-100m-users-just-six-months/},
+		[online, accessed April, 2015].
+
+	\bibitem {aerofs:cloud_types}
+		\emph{Enterprise Solution - Deployment Options, AeroFS;}
+		\url{https://www.aerofs.com/features/deployment-options/},
+		[online, accessed April, 2015].
+
+	\bibitem {thefreedictionary}
+		\emph{File Storage Definition;}
+		\url{http://encyclopedia2.thefreedictionary.com/file+storage},
+		[online, accessed April, 2015].
+
+	\bibitem {aerofs:peering_scheme_2}
+		\emph{Flexible Storage for the Enterprise;}
+		\url{https://www.aerofs.com/features/flexible-storage/},
+		[online, accessed April, 2015].
+
+	\bibitem {hive2hive:about}
+		\emph{Hive2Hive: About Us;}
+		\url{https://github.com/Hive2Hive/Hive2Hive/wiki/About-Us},
+		[online, accessed March, 2015].
+
+	\bibitem {hive2hive:github}
+		\emph{Hive2Hive: Java library for secure, distributed, P2P-based file synchronization and sharing;}
+		\url{https://github.com/Hive2Hive},
+		[online, accessed March, 2015].
+	%% (https://github.com/tomp2p/TomP2P) (https://github.com/PeerWasp/PeerWasp)
+
+	\bibitem {hive2hive}
+		\emph{Hive2Hive: Open-Source Library for P2P-based File Synchronization and Sharing;}
+		\url{http://hive2hive.com/},
+		[online, accessed March, 2015].
+
+	\bibitem {peerwasp}
+		\emph{Peerwasp, P2P File Synchronization and Sharing Solution based on Hive2Hive and TomP2P}
+		\url{http://www.peerwasp.com/},
+		[online, accessed April, 2015].
+
+	\bibitem {peerwasp:github}
+		\emph{Peerwasp, P2P File Synchronization and Sharing Solution based on Hive2Hive and TomP2P}
+		\url{https://github.com/PeerWasp/PeerWasp},
+		[online, accessed April, 2015].
+
+	\bibitem {aerofs:pricing}
+		\emph{Pricing, AeroFS;}
+		\url{https://www.aerofs.com/pricing/},
+		[online, accessed April, 2015].
+
+	\bibitem {aerofs:security}
+		\emph{Security, AeroFS;}
+		\url{https://www.aerofs.com/security/},
+		[online, accessed April, 2015].
 		
+	\bibitem {aerofs:peering_scheme}
+		\emph{Security Share and Transfer Large Files, Enterprise Solution, Aerofs;}
+		\url{https://www.aerofs.com/solutions/transfer-large-files/},
+		[online, accessed April, 2015].
+
 	\bibitem {storj:crowdsale}
 		\emph{Storj Deck - Decentralized Cloud;}
 		\url{http://storj.io/Deck.pdf},
-		online accessed at April, 2015.
+		[online, accessed April, 2015].
 
 	\bibitem {storj:earlyaccess}
 		\emph{Storj - Early Access;}
 		\url{http://storj.io/earlyaccess.html},
-		online accessed at April, 2015.
+		[online, accessed April, 2015].
 		
 	\bibitem {storj:github}
 		\emph{Storj Labs;}
 		\url{https://github.com/Storj/},
-		online accessed at March, 2015.
+		[online, accessed March, 2015].
 		
 	\bibitem {storj:deck}
 		\emph{Storj - The Crowdsale;}
 		\url{http://storj.io/crowdsale.html},
-		online accessed at March, 2015.
+		[online, accessed March, 2015].
 		
 	\bibitem {storj:forum}
 		\emph{Storjtalk;}
 		\url{https://storjtalk.org/},
-		online accessed at April, 2015.
+		[online, accessed April, 2015].
 		
 	\bibitem {bittorrentsync}
 		\emph{Sync;}
 		\url{https://www.getsync.com/},
-		online accessed at March, 2015.
-
-	\bibitem {p2p:introduction_storage_systems}
-		Prof. Chun-Hsin Wu:
-		\emph{P2P Storage Systems;}
-		\url{http://www.csie.nuk.edu.tw/~wuch/course/csf641/csf641-04-storage.pdf},
-		online accessed at Mai, 2015.
+		[online, accessed March, 2015].
 		
 	\bibitem {p2p-introduction:tomp2p}
 		\emph{TomP2P: A P2P-based high performance key-value pair storage library;}
 		\url{http://tomp2p.net/doc/p2p/},
-		online accessed at April, 2015.		
+		[online, accessed April, 2015].		
 
 	\bibitem {tomp2p}
 		\emph{TomP2P, a P2P-based high performance key-value pair storage library;}
 		\url{http://tomp2p.net},
-		online accessed at April, 2015.
+		[online, accessed April, 2015].
 
 	\bibitem {tomp2p:github}
 		\emph{TomP2P, a P2P-based high performance key-value pair storage library}
 		\url{https://github.com/tomp2p/TomP2P},
-		online accessed at April, 2015.
-
-	\bibitem {openp2p:p2p_introduction}
-		\emph{Distributed Systems Topologies: Part 2 - O'Reilly Media;}
-		\url{hhttp://www.openp2p.com/pub/a/p2p/2002/01/08/p2p_topologies_pt2.html},
-		online accessed at Mai, 2015.
-
-	\bibitem {aerofs:USTO.RE}
-		Dur\~ao et al:
-		\emph{USTO.RE: A Private Cloud Storage Software System;}
-		\url{http://www.researchgate.net/profile/Vinicius_Garcia/publication/262284124_USTO.RE_a_private_cloud_storage_software_system/links/5457a3f30cf2cf51648219ed.pdf},
-		online accessed at April, 2015.
+		[online, accessed April, 2015].
 
 	\bibitem {storj:blog:what_is_storj}
 		\emph{What ist Storj?;}
 		\url{http://blog.storj.io/post/87251450053/what-is-storj},
-		online accessed March, 2015.
+		[online, accessed March, 2015].
 
 	\bibitem {aerofs:storage_types}
 		\emph{What Storage Types Can I Use With The AeroFS Team Server? - AeroFS Support;}
 		\url{https://support.aerofs.com/hc/en-us/articles/203434524},
-		online accessed at April, 2015.
+		[online, accessed April, 2015].
 
 \end{thebibliography}
